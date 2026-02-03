@@ -3,3 +3,7 @@
 
 # htaccess
 /.htaccess
+
+# Images
+/assets/images
+node_modules

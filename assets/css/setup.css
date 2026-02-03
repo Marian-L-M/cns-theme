@@ -1,0 +1,135 @@
+/* Page setup css */
+/* Variables */
+:root {
+  --main-white: #fff;
+  --main-black: #000;
+  --main-grey: grey;
+  --light-grey: lightgrey;
+
+  --primary-color: pink;
+  --secondary-color: green;
+  --main-bg-color: brown;
+  --main-text-color: black;
+  --contrast-text-color: white;
+
+  --breakpoint-sm: 576px;
+  --breakpoint-md: 768px;
+  --breakpoint-lg: 992px;
+  --breakpoint-xl: 1200px;
+  --breakpoint-xxl: 1400px;
+
+  --font-st: Verdana, Arial, sans-serif;
+
+  --spacing-st: clamp(4rem, 7vw, 10rem);
+  --spacing-half: clamp(2.4rem, 4vw, 6rem);
+
+  --width-mobile: 84.6%;
+  --width-pc: 72%;
+}
+/* Resets */
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,
+html,
+main,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Setup */
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: var(--font-st);
+  font-size: 1.4rem;
+  line-height: 160%;
+}
+main {
+  padding-top: calc(2rem + 1em);
+}
+h1 {
+  font-size: 2.4rem;
+}
+img {
+  object-fit: contain;
+  height: auto;
+  max-width: 100%;
+}
+a {
+  color: var(--main-text-color);
+  text-decoration: none;
+}
+
+/* Form elements */
+button {
+  appearance: none;
+  background-color: unset;
+  border: unset;
+  width: fit-content;
+  height: fit-content;
+}
+
+input {
+  border: unset;
+  appearance: none;
+}
+
+/* Set user contents defaults */
+/* Editor fonts */
+.generic-contents {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    letter-spacing: 0;
+  }
+  h1 {
+    font-size: 1.5em;
+  }
+  h2 {
+    font-size: 1.25em;
+  }
+  h3 {
+    font-size: 1.125em;
+  }
+  h4 {
+    font-size: 1em;
+  }
+  h5 {
+    font-size: 0.875em;
+  }
+  h6 {
+    font-size: 0.75em;
+  }
+  p {
+    letter-spacing: 0.05em;
+    line-height: 180%;
+    font-size: 1em;
+  }
+}
+
+/* Medium Screen */
+@media screen and (min-width: 768px) {
+  /* Setup */
+  body {
+    font-size: 1.6rem;
+    line-height: 180%;
+  }
+}
