@@ -1,14 +1,32 @@
 <?php
 // Theme custom blocks
-function bannerBlock()
+class JSXBlock
 {
-    wp_register_script(
-        "bannerBlockScript",
-        get_stylesheet_directory_uri() . "/build/banner.js",
-        ["wp-blocks", "wp-editor"],
-    );
-    register_block_type("cns-theme/banner", [
-        "editor_script" => "bannerBlockScript",
-    ]);
+    public function __construct($name)
+    {
+        $this->name = $name;
+        add_action("init", [$this, "onInit"]);
+    }
+
+    public function onInit()
+    {
+        $asset_file = get_theme_file_path("/build/{$this->name}.asset.php");
+        $asset = file_exists($asset_file)
+            ? require $asset_file
+            : ["dependencies" => [], "version" => false];
+
+        wp_register_script(
+            $this->name,
+            get_stylesheet_directory_uri() . "/build/{$this->name}.js",
+            $asset["dependencies"],
+            $asset["version"],
+        );
+        register_block_type("cns-theme/{$this->name}", [
+            "editor_script" => $this->name,
+        ]);
+    }
 }
-add_action("init", "bannerBlock");
+
+new JSXBlock("banner");
+new JSXBlock("genericbutton");
+new JSXBlock("genericheading");

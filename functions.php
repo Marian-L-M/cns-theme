@@ -29,6 +29,12 @@ function load_project_files()
         get_template_directory_uri() . "/assets/css/animation.css",
     );
 
+    // Editor custom elements
+    wp_enqueue_style(
+        "custom_blocks",
+        get_template_directory_uri() . "/build/style-index.css",
+    );
+
     // Load Scripts
     wp_enqueue_script(
         "cns-theme-modules",

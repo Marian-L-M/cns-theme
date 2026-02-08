@@ -1,0 +1,31 @@
+@charset "UTF-8";
+@use "variables" as var;
+
+.btn {
+  padding: 0.2em 1em;
+
+  appearance: none;
+  background-color: #000;
+  border-radius: 5px;
+  color: #fff;
+  line-height: 100%;
+  text-decoration: unset;
+  &--small {
+    font-size: 1.4rem;
+  }
+  &--medium {
+    font-size: 1.6rem;
+  }
+  &--large {
+    font-size: 2rem;
+  }
+  &--blue {
+    background-color: var.$blue;
+  }
+  &--orange {
+    background-color: var.$orange;
+  }
+  &--dark-orange {
+    background-color: var.$dark-orange;
+  }
+}
