@@ -2,10 +2,19 @@
 // Theme custom blocks
 class JSXBlock
 {
-    public function __construct($name)
+    public function __construct($name, $renderCallback = null)
     {
         $this->name = $name;
+        $this->renderCallback = $renderCallback;
         add_action("init", [$this, "onInit"]);
+    }
+
+    public function leRenderCallback($attributes, $content)
+    {
+        ob_start();
+        require get_theme_file_path("/blocks/{$this->name}.php");
+
+        return ob_get_clean();
     }
 
     public function onInit()
@@ -21,12 +30,16 @@ class JSXBlock
             $asset["dependencies"],
             $asset["version"],
         );
-        register_block_type("cns-theme/{$this->name}", [
+        $registerArgs = [
             "editor_script" => $this->name,
-        ]);
+        ];
+        if ($this->renderCallback) {
+            $registerArgs["render_callback"] = [$this, "leRenderCallback"];
+        }
+        register_block_type("cns-theme/{$this->name}", $registerArgs);
     }
 }
 
-new JSXBlock("banner");
+new JSXBlock("banner", true);
 new JSXBlock("genericbutton");
 new JSXBlock("genericheading");

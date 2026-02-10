@@ -57,8 +57,8 @@ function theme_features()
     add_theme_support("post-thumbnails");
     add_theme_support("editor-styles");
     add_editor_style(["build/style-index.css", "build/index.css"]);
+    add_image_size("banner", 1600, 600, true);
     // add_image_size("mobile", 600, 900, true);
-    // add_image_size("banner", 1600, 600, true);
     // add_image_size("banner-xl", 2400, 900, true);
     register_nav_menu("headerMenuLocation", "Header Menu Location");
     register_nav_menu("footerMenuLocation", "Footer Menu Location");
