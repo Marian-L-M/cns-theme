@@ -2,3 +2,28 @@
 $blue: #0d3b66;
 $orange: #ee964b;
 $dark-orange: #f95738;
+
+$main-white: #fff;
+$main-black: #000;
+$main-grey: grey;
+$light-grey: lightgrey;
+
+$primary-color: pink;
+$secondary-color: green;
+$main-bg-color: brown;
+$main-text-color: black;
+$contrast-text-color: white;
+
+$breakpoint-sm: 576px;
+$breakpoint-md: 768px;
+$breakpoint-lg: 992px;
+$breakpoint-xl: 1200px;
+$breakpoint-xxl: 1400px;
+
+$font-st: Verdana, Arial, sans-serif;
+
+$spacing-st: clamp(4rem, 7vw, 10rem);
+$spacing-half: clamp(2.4rem, 4vw, 6rem);
+
+$width-mobile: 84.6%;
+$width-pc: 72%;

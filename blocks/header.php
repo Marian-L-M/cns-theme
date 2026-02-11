@@ -4,10 +4,13 @@
         <?php wp_nav_menu([
             "theme_location" => "headerMenuLocation",
         ]); ?>
-      <button type="button" class="btn btn__icon text-xl fx-content-center p-r1 rounded-sm toggle-search-overlay"
+      <!-- <button type="button" class="btn btn__icon text-xl fx-content-center p-r1 rounded-sm toggle-search-overlay"
             id="toggle-search-overlay" @click="openSearchMenu = ! openSearchMenu"
-            aria-label="open search menu"><?php generate_icon("search"); ?>
-        </button>
+            aria-label="open search menu">
+            <?php
+// generate_icon("search");
+?>
+        </button> -->
         <li class="dropdown" x-data="{ openUserMenu: false }">
             <button class="dropdown__toggle" @click="openUserMenu = ! openUserMenu" aria-label="open user menu">
                 icon/toggle

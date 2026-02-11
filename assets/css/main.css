@@ -1,7 +1,7 @@
 /* Default components */
 
 /* Defaults */
-header {
+/* header {
   position: fixed;
   top: 0;
   left: 0;
@@ -27,8 +27,8 @@ header {
     color: var(--main-text-color);
     padding: 0 1em;
   }
-}
-
+} */
+/* 
 #breadcrumbs {
   display: flex;
   gap: 1rem;
@@ -87,31 +87,31 @@ header {
 }
 
 .close__button {
-    position: absolute;
-    top: 2vw;
-    right: 2vw;
-    width: 4rem;
-    height: 4rem;
-    &::after,
-    &::before {
-      content: "";
-      display: block;
-      height: 4px;
-      width: 100%;
+  position: absolute;
+  top: 2vw;
+  right: 2vw;
+  width: 4rem;
+  height: 4rem;
+  &::after,
+  &::before {
+    content: "";
+    display: block;
+    height: 4px;
+    width: 100%;
 
-      position: absolute;
-      
-      background-color: var(--main-black);
-      border-radius: 2px;
-      transform-origin: center;
-    }
-    &::after {
-      transform: rotate(45deg);
-    }
-    &::before {
-      transform: rotate(-45deg);
-    }
+    position: absolute;
+
+    background-color: var(--main-black);
+    border-radius: 2px;
+    transform-origin: center;
   }
+  &::after {
+    transform: rotate(45deg);
+  }
+  &::before {
+    transform: rotate(-45deg);
+  }
+} */
 
 /* Layout */
 .posts__list,
@@ -124,7 +124,7 @@ header {
 
 .post-list-item {
   width: 100%;
-  
+
   padding: 1rem;
   border-bottom: 1px solid lightgrey;
   a {
@@ -150,7 +150,6 @@ header {
 
 .wrapper {
   width: 100%;
-  
 }
 
 /* Elements */
@@ -233,10 +232,10 @@ nav {
 
 /* Data handling */
 
-[data-status="inactive"]  .active-content {
+[data-status="inactive"] .active-content {
   display: none;
 }
-[data-status="active"]  .inactive-content {
+[data-status="active"] .inactive-content {
   display: none;
 }
 /* Small */
@@ -280,11 +279,9 @@ nav {
 
 /* Structure */
 .container {
-  
   width: var(--width-mobile);
   max-width: var(--breakpoint-sm);
   &__full {
-    
     width: 100%;
     max-width: 100%;
   }
@@ -292,7 +289,6 @@ nav {
 
 .card {
   width: 100%;
-  
 }
 
 .card__post {
@@ -315,7 +311,7 @@ nav {
 
 .grid-container {
   width: 100%;
-  
+
   display: grid;
 }
 .grid__23,

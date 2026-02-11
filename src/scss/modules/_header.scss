@@ -1,0 +1,30 @@
+@charset "UTF-8";
+@use "variables" as var;
+
+header {
+  position: fixed;
+  top: 0;
+  left: 0;
+
+  width: 100%;
+  padding: 1rem 2rem;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 2.4rem;
+  z-index: 1000;
+  background-color: var.$orange;
+  nav,
+  ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+  }
+  li a {
+    font-size: clamp(1.6rem, 2vw, 2rem);
+    color: var.$main-text-color;
+    padding: 0 1em;
+  }
+}
