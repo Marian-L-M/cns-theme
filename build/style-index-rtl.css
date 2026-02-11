@@ -58,3 +58,11 @@
 .btn--dark-orange {
   background-color: #f95738;
 }
+.layout-two-col {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+.layout-two-col__column {
+  flex: 1 1 200px;
+}

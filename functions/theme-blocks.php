@@ -1,5 +1,8 @@
 <?php
 // Theme custom blocks
+/**
+ * Register custom block
+ */
 class JSXBlock
 {
     public function __construct($name, $renderCallback = null)
@@ -43,3 +46,4 @@ class JSXBlock
 new JSXBlock("banner", true);
 new JSXBlock("genericbutton");
 new JSXBlock("genericheading");
+new JSXBlock("layouttwocol", true);

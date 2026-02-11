@@ -1,0 +1,9 @@
+@charset "UTF-8";
+.layout-two-col {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  &__column {
+    flex: 1 1 200px;
+  }
+}
