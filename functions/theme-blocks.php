@@ -47,3 +47,4 @@ new JSXBlock("banner", true);
 new JSXBlock("genericbutton");
 new JSXBlock("genericheading");
 new JSXBlock("layouttwocol", true);
+new JSXBlock("header", true);
