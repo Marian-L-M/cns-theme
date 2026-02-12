@@ -1,3 +1,4 @@
+// Global elements
 @use "modules/page-banner";
 @use "modules/generic-headline";
 @use "modules/generic-button";
@@ -5,3 +6,8 @@
 @use "modules/footer";
 @use "modules/header";
 @use "modules/menu-elements";
+
+// Wiki Elements
+@use "modules/infobox";
+
+// Map Elements
