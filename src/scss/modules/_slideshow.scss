@@ -1,0 +1,21 @@
+@charset "UTF-8";
+
+// // Required Core Stylesheet
+// @import "node_modules/@glidejs/glide/src/assets/sass/glide.core";
+
+// // Optional Theme Stylesheet
+// @import "node_modules/@glidejs/glide/src/assets/sass/glide.theme";
+.slideshow {
+  &__container {
+    padding: 4rem;
+    background-color: #333;
+  }
+  &__slide {
+    aspect-ratio: 5 / 1;
+  }
+  &__title {
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+  }
+}

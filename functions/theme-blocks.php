@@ -5,9 +5,10 @@
  */
 class JSXBlock
 {
-    public function __construct($name, $renderCallback = null)
+    public function __construct($name, $renderCallback = null, $data = null)
     {
         $this->name = $name;
+        $this->data = $data;
         $this->renderCallback = $renderCallback;
         add_action("init", [$this, "onInit"]);
     }
@@ -46,8 +47,13 @@ class JSXBlock
 }
 
 new JSXBlock("banner", true);
+new JSXBlock("slideshow", true, [""]);
+new JSXBlock("slide", true, [
+    "themeimagepath" => get_theme_file_uri("/assets/images/"),
+]);
 new JSXBlock("genericbutton");
 new JSXBlock("genericheading");
 new JSXBlock("layouttwocol", true);
 new JSXBlock("header", true);
+new JSXBlock("footer", true);
 new JSXBlock("infobox");

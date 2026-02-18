@@ -1,4 +1,5 @@
 <footer>
+    <p>Le footer</p>
     <a href="<?php echo site_url(); ?>" class="logo logo__footer">Logo</a>
     <nav>
         <?php wp_nav_menu([

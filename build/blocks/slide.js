@@ -139,9 +139,9 @@ module.exports = window["ReactJSXRuntime"];
 var __webpack_exports__ = {};
 // This entry needs to be wrapped in an IIFE because it needs to be isolated against other modules in the chunk.
 (() => {
-/*!***************************!*\
-  !*** ./blocks/infobox.js ***!
-  \***************************/
+/*!*************************!*\
+  !*** ./blocks/slide.js ***!
+  \*************************/
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @wordpress/api-fetch */ "@wordpress/api-fetch");
 /* harmony import */ var _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0__);
@@ -161,8 +161,8 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
-(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)("cns-theme/infobox", {
-  title: "CNS Infobox",
+(0,_wordpress_blocks__WEBPACK_IMPORTED_MODULE_1__.registerBlockType)("cns-theme/slide", {
+  title: "CNS Slide",
   supports: {
     align: ["full"]
   },
@@ -177,6 +177,9 @@ __webpack_require__.r(__webpack_exports__);
     imgURL: {
       type: "text",
       default: "/wp-content/themes/cns-theme/assets/images/banner.png" // Dirty solution
+    },
+    defaultimg: {
+      type: "text"
     }
   },
   edit: EditComponent,
@@ -184,13 +187,20 @@ __webpack_require__.r(__webpack_exports__);
 });
 function EditComponent(props) {
   (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
+    if (props.attributes.defaultimg) {
+      props.setAttributes({
+        imgURL: `${slide.themeimagepath + props.attributes.defaultimg}`
+      });
+    }
+  }, []);
+  (0,_wordpress_element__WEBPACK_IMPORTED_MODULE_4__.useEffect)(function () {
     async function go() {
       const response = await _wordpress_api_fetch__WEBPACK_IMPORTED_MODULE_0___default()({
         path: `/wp/v2/media/${props.attributes.imgID}`,
         method: "GET"
       });
-      console.log(response);
       props.setAttributes({
+        defaultimg: "",
         imgURL: response.media_details.sizes.banner.source_url
       });
     }
@@ -201,10 +211,14 @@ function EditComponent(props) {
       imgID: x.id
     });
   }
+
+  // To do: enable slides in editor(?)
+  // All very hacky
+  // Seems counterproductive ui/ux wise. Consider a stacked preview instead
   return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)(react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.Fragment, {
     children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InspectorControls, {
       children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelBody, {
-        title: "Infobox Image",
+        title: "Background",
         initialOpen: true,
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_components__WEBPACK_IMPORTED_MODULE_3__.PanelRow, {
           children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.MediaUploadCheck, {
@@ -224,14 +238,14 @@ function EditComponent(props) {
         })
       })
     }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "infobox",
+      className: "page-banner",
       children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "infobox__image",
+        className: "page-banner__bg-image",
         style: {
           backgroundImage: `url(${props.attributes.imgURL})`
         }
       }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-        className: "infobox__content",
+        className: "page-banner__content",
         children: /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks, {
           allowedBlocks: ["core/paragraph", "core/heading", "core/list", "cns-theme/genericheading", "cns-theme/genericbutton"]
         })
@@ -239,22 +253,11 @@ function EditComponent(props) {
     })]
   });
 }
-function SaveComponent(props) {
-  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-    className: "infobox",
-    children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)("div", {
-      className: "infobox__image",
-      style: {
-        backgroundImage: `url(${props.attributes.imgURL})`
-      }
-    }), /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsxs)("div", {
-      className: "infobox__content",
-      children: [/*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, {}), ";"]
-    })]
-  });
+function SaveComponent() {
+  return /*#__PURE__*/(0,react_jsx_runtime__WEBPACK_IMPORTED_MODULE_5__.jsx)(_wordpress_block_editor__WEBPACK_IMPORTED_MODULE_2__.InnerBlocks.Content, {});
 }
 })();
 
 /******/ })()
 ;
-//# sourceMappingURL=infobox.js.map
+//# sourceMappingURL=slide.js.map

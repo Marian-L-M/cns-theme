@@ -46,6 +46,7 @@ function load_project_files()
     );
     wp_localize_script("cns-theme-modules", "cnsThemeData", [
         "root_url" => get_site_url(), // Make root url accessible to JS
+        "theme_uri" => get_template_directory_uri(),
         "nonce" => wp_create_nonce("wp_rest"),
     ]);
 }

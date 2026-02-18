@@ -166,6 +166,18 @@ header li a {
 .close__button::before {
   transform: rotate(-45deg);
 }
+.slideshow__container {
+  padding: 4rem;
+  background-color: #333;
+}
+.slideshow__slide {
+  aspect-ratio: 5/1;
+}
+.slideshow__title {
+  color: #fff;
+  font-size: 2rem;
+  text-align: center;
+}
 .infobox {
   background-color: lightgray;
   display: flex;

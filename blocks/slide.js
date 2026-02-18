@@ -9,8 +9,8 @@ import {
 import { Button, Panel, PanelBody, PanelRow } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
-registerBlockType("cns-theme/infobox", {
-  title: "CNS Infobox",
+registerBlockType("cns-theme/slide", {
+  title: "CNS Slide",
   supports: {
     align: ["full"],
   },
@@ -26,12 +26,23 @@ registerBlockType("cns-theme/infobox", {
       type: "text",
       default: "/wp-content/themes/cns-theme/assets/images/banner.png", // Dirty solution
     },
+    defaultimg: {
+      type: "text",
+    },
   },
   edit: EditComponent,
   save: SaveComponent,
 });
 
 function EditComponent(props) {
+  useEffect(function () {
+    if (props.attributes.defaultimg) {
+      props.setAttributes({
+        imgURL: `${slide.themeimagepath + props.attributes.defaultimg}`,
+      });
+    }
+  }, []);
+
   useEffect(
     function () {
       async function go() {
@@ -39,8 +50,8 @@ function EditComponent(props) {
           path: `/wp/v2/media/${props.attributes.imgID}`,
           method: "GET",
         });
-        console.log(response);
         props.setAttributes({
+          defaultimg: "",
           imgURL: response.media_details.sizes.banner.source_url,
         });
       }
@@ -53,10 +64,13 @@ function EditComponent(props) {
     props.setAttributes({ imgID: x.id });
   }
 
+  // To do: enable slides in editor(?)
+  // All very hacky
+  // Seems counterproductive ui/ux wise. Consider a stacked preview instead
   return (
     <>
       <InspectorControls>
-        <PanelBody title="Infobox Image" initialOpen={true}>
+        <PanelBody title="Background" initialOpen={true}>
           <PanelRow>
             <MediaUploadCheck>
               <MediaUpload
@@ -70,12 +84,12 @@ function EditComponent(props) {
           </PanelRow>
         </PanelBody>
       </InspectorControls>
-      <div className="infobox">
+      <div className="page-banner">
         <div
-          className="infobox__image"
+          className="page-banner__bg-image"
           style={{ backgroundImage: `url(${props.attributes.imgURL})` }}
         ></div>
-        <div className="infobox__content">
+        <div className="page-banner__content">
           <InnerBlocks
             allowedBlocks={[
               "core/paragraph",
@@ -91,16 +105,6 @@ function EditComponent(props) {
   );
 }
 
-function SaveComponent(props) {
-  return (
-    <div className="infobox">
-      <div
-        className="infobox__image"
-        style={{ backgroundImage: `url(${props.attributes.imgURL})` }}
-      ></div>
-      <div className="infobox__content">
-        <InnerBlocks.Content />;
-      </div>
-    </div>
-  );
+function SaveComponent() {
+  return <InnerBlocks.Content />;
 }
