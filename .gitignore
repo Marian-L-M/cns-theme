@@ -6,4 +6,6 @@
 
 # Images
 /assets/images
+/build
 node_modules
+
