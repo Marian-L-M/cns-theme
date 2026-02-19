@@ -1,6 +1,5 @@
 <?php
 // Setup theme
-require get_theme_file_path("/functions/theme-blocks.php");
 require get_theme_file_path("/functions/search-route.php");
 require get_theme_file_path("/functions/like-route.php");
 require get_theme_file_path("/functions/login-settings.php");
@@ -67,3 +66,10 @@ function theme_features()
 }
 
 add_action("after_setup_theme", "theme_features");
+
+// Register new blocks
+function register_cns_theme_blocks()
+{
+    register_block_type_from_metadata(__DIR__ . "build/footer");
+}
+add_action("init", "register_cns_theme_blocks");

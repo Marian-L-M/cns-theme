@@ -1,5 +1,5 @@
 <?php
-// Theme custom blocks
+// Marked for deletion. Logic moved to register_block_type_from_metadata
 /**
  * Register custom block
  */
