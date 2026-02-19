@@ -1,6 +1,13 @@
 {
   "version": 3,
   "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "customTemplates": [
+    {
+      "name": "wiki",
+      "title": "Wiki Standard Template",
+      "postTypes": ["wiki"]
+    }
+  ],
   "settings": {
     "useRootPaddingAwareAlignments": true,
     "appearanceTools": true,
