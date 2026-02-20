@@ -9,5 +9,14 @@
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "render": "file:./render.php",
-  "textdomain": "cns-theme"
+  "textdomain": "cns-theme",
+  "attributes": {
+    "content": {
+      "type": "string"
+    }
+  },
+  "supports": {
+    "html": true,
+    "align": ["full"]
+  }
 }

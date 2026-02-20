@@ -70,6 +70,7 @@ add_action("after_setup_theme", "theme_features");
 // Register new blocks
 function register_cns_theme_blocks()
 {
-    register_block_type_from_metadata(__DIR__ . "build/footer");
+    register_block_type_from_metadata(__DIR__ . "/build/header");
+    register_block_type_from_metadata(__DIR__ . "/build/footer");
 }
 add_action("init", "register_cns_theme_blocks");
