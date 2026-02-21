@@ -1,0 +1,20 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cns-theme/banner",
+  "title": "CNS Banner",
+  "supports": {
+    "align": ["full"]
+  },
+  "attributes": {
+    "align": { "type": "string", "default": "full" },
+    "imgID": { "type": "number" },
+    "imgURL": {
+      "type": "string"
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css",
+  "render": "file:./render.php"
+}

@@ -1,49 +1,41 @@
 import apiFetch from "@wordpress/api-fetch";
-import { registerBlockType } from "@wordpress/blocks";
+import { Button, PanelBody, PanelRow } from "@wordpress/components";
 import {
+  useBlockProps,
   InnerBlocks,
   InspectorControls,
   MediaUpload,
   MediaUploadCheck,
 } from "@wordpress/block-editor";
-import { Button, Panel, PanelBody, PanelRow } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
-registerBlockType("cns-theme/banner", {
-  title: "CNS Banner",
-  supports: {
-    align: ["full"],
-  },
-  attributes: {
-    align: {
-      type: "text",
-      default: "full",
-    },
-    imgID: {
-      type: "number",
-    },
-    imgURL: {
-      type: "text",
-    },
-  },
-  edit: EditComponent,
-  save: SaveComponent,
-});
+export default function Edit(props) {
+  const blockProps = useBlockProps();
 
-function EditComponent(props) {
+  useEffect(function () {
+    if (!props.attributes.imgURL) {
+      props.setAttributes({
+        imgURL: cnsThemeData.theme_uri + "/assets/images/banner.png",
+      });
+    } else {
+      console.log(props.attributes.imgURL);
+    }
+  }, []);
+
   useEffect(
     function () {
-      async function go() {
-        const response = await apiFetch({
-          path: `/wp/v2/media/${props.attributes.imgID}`,
-          method: "GET",
-        });
-        console.log(response);
-        props.setAttributes({
-          imgURL: response.media_details.sizes.banner.source_url,
-        });
+      if (props.attributes.imgID) {
+        async function go() {
+          const response = await apiFetch({
+            path: `/wp/v2/media/${props.attributes.imgID}`,
+            method: "GET",
+          });
+          props.setAttributes({
+            imgURL: response.media_details.sizes.banner.source_url,
+          });
+        }
+        go();
       }
-      go();
     },
     [props.attributes.imgID],
   );
@@ -53,7 +45,7 @@ function EditComponent(props) {
   }
 
   return (
-    <>
+    <div {...blockProps}>
       <InspectorControls>
         <PanelBody title="Background" initialOpen={true}>
           <PanelRow>
@@ -62,7 +54,7 @@ function EditComponent(props) {
                 onSelect={onFileSelect}
                 value={props.attributes.imgID}
                 render={({ open }) => {
-                  return <Button onClick={open}>Choose image</Button>;
+                  return <Button onClick={open}>Choose Image</Button>;
                 }}
               />
             </MediaUploadCheck>
@@ -72,9 +64,9 @@ function EditComponent(props) {
       <div className="page-banner">
         <div
           className="page-banner__bg-image"
-          style={{ backgroundImage: `url(${props.attributes.imgURL})` }}
+          style={{ backgroundImage: `url('${props.attributes.imgURL}')` }}
         ></div>
-        <div className="page-banner__content">
+        <div className="page-banner__content container t-center c-white">
           <InnerBlocks
             allowedBlocks={[
               "core/paragraph",
@@ -86,10 +78,6 @@ function EditComponent(props) {
           />
         </div>
       </div>
-    </>
+    </div>
   );
-}
-
-function SaveComponent() {
-  return <InnerBlocks.Content />;
 }

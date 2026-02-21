@@ -70,7 +70,11 @@ add_action("after_setup_theme", "theme_features");
 // Register new blocks
 function register_cns_theme_blocks()
 {
+    wp_localize_script("wp-editor", "cnsThemeData", [
+        "theme_uri" => get_stylesheet_directory_uri(),
+    ]);
     register_block_type_from_metadata(__DIR__ . "/build/header");
     register_block_type_from_metadata(__DIR__ . "/build/footer");
+    register_block_type_from_metadata(__DIR__ . "/build/banner");
 }
 add_action("init", "register_cns_theme_blocks");
