@@ -17,8 +17,6 @@ export default function Edit(props) {
       props.setAttributes({
         imgURL: cnsThemeData.theme_uri + "/assets/images/banner.png",
       });
-    } else {
-      console.log(props.attributes.imgURL);
     }
   }, []);
 
