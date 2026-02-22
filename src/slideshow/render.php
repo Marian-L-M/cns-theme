@@ -5,22 +5,10 @@
 <?php if (!isset($attributes["imgURL"])) {
     $attributes["imgURL"] = get_theme_file_uri("/assets/images/banner.png");
 } ?>
-<!-- <div class="slideshow__container">
-  <div
-    class="page-banner__bg-image"
-    style="background-image: url('<?php echo $attributes["imgURL"]; ?>');"
-  ></div>
-  <div class="page-banner__content">
-  </div>
-</div> -->
-
 <div class="glide">
   <div class="glide__track" data-glide-el="track">
     <ul class="glide__slides">
     <?php echo $content; ?>
-      <!-- <li class="glide__slide">0</li>
-      <li class="glide__slide">1</li>
-      <li class="glide__slide">2</li> -->
     </ul>
   </div>
 </div>

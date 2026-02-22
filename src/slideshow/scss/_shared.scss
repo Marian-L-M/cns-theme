@@ -1,0 +1,17 @@
+@charset "UTF-8";
+@use "../../scss/modules/variables/" as var;
+
+.slideshow {
+  &__container {
+    padding: 4rem;
+    background-color: #333;
+  }
+  &__slide {
+    aspect-ratio: 5 / 1;
+  }
+  &__title {
+    color: #fff;
+    font-size: 2rem;
+    text-align: center;
+  }
+}

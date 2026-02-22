@@ -1,6 +1,7 @@
 import apiFetch from "@wordpress/api-fetch";
 import { registerBlockType } from "@wordpress/blocks";
 import {
+  useBlockProps,
   InnerBlocks,
   InspectorControls,
   MediaUpload,
@@ -9,42 +10,31 @@ import {
 import { Button, Panel, PanelBody, PanelRow } from "@wordpress/components";
 import { useEffect } from "@wordpress/element";
 
-registerBlockType("cns-theme/infobox", {
-  title: "CNS Infobox",
-  supports: {
-    align: ["full"],
-  },
-  attributes: {
-    align: {
-      type: "text",
-      default: "full",
-    },
-    imgID: {
-      type: "number",
-    },
-    imgURL: {
-      type: "text",
-      default: "/wp-content/themes/cns-theme/assets/images/banner.png", // Dirty solution
-    },
-  },
-  edit: EditComponent,
-  save: SaveComponent,
-});
+export default function Edit(props) {
+  const blockProps = useBlockProps();
 
-function EditComponent(props) {
+  useEffect(function () {
+    if (!props.attributes.imgURL) {
+      props.setAttributes({
+        imgURL: cnsThemeData.theme_uri + "/assets/images/banner.png",
+      });
+    }
+  }, []);
+
   useEffect(
     function () {
-      async function go() {
-        const response = await apiFetch({
-          path: `/wp/v2/media/${props.attributes.imgID}`,
-          method: "GET",
-        });
-        console.log(response);
-        props.setAttributes({
-          imgURL: response.media_details.sizes.banner.source_url,
-        });
+      if (props.attributes.imgID) {
+        async function go() {
+          const response = await apiFetch({
+            path: `/wp/v2/media/${props.attributes.imgID}`,
+            method: "GET",
+          });
+          props.setAttributes({
+            imgURL: response.media_details.sizes.banner.source_url,
+          });
+        }
+        go();
       }
-      go();
     },
     [props.attributes.imgID],
   );
@@ -54,7 +44,7 @@ function EditComponent(props) {
   }
 
   return (
-    <>
+    <div {...blockProps}>
       <InspectorControls>
         <PanelBody title="Infobox Image" initialOpen={true}>
           <PanelRow>
@@ -77,29 +67,9 @@ function EditComponent(props) {
         ></div>
         <div className="infobox__content">
           <InnerBlocks
-            allowedBlocks={[
-              "core/paragraph",
-              "core/heading",
-              "core/list",
-              "cns-theme/genericheading",
-              "cns-theme/genericbutton",
-            ]}
+            allowedBlocks={["core/paragraph", "core/heading", "core/list"]}
           />
         </div>
-      </div>
-    </>
-  );
-}
-
-function SaveComponent(props) {
-  return (
-    <div className="infobox">
-      <div
-        className="infobox__image"
-        style={{ backgroundImage: `url(${props.attributes.imgURL})` }}
-      ></div>
-      <div className="infobox__content">
-        <InnerBlocks.Content />;
       </div>
     </div>
   );

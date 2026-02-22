@@ -1,4 +1,6 @@
 @charset "UTF-8";
+@use "../../scss/modules/variables/" as var;
+
 .infobox {
   background-color: lightgray;
   display: flex;
