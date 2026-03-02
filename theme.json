@@ -1,10 +1,28 @@
 {
   "version": 3,
   "$schema": "https://schemas.wp.org/trunk/theme.json",
+  "templateParts": [
+    {
+      "name": "header",
+      "title": "Header",
+      "area": "header"
+    },
+    {
+      "name": "footer",
+      "title": "Footer",
+      "area": "footer"
+    },
+    { "name": "sidebar", "title": "Sidebar", "area": "uncategorized" },
+    {
+      "name": "sidebar-right",
+      "title": "Sidebar Right",
+      "area": "uncategorized"
+    }
+  ],
   "customTemplates": [
     {
       "name": "wiki",
-      "title": "Wiki Standard Template",
+      "title": "Wiki Single Template",
       "postTypes": ["wiki"]
     }
   ],
@@ -12,8 +30,8 @@
     "useRootPaddingAwareAlignments": true,
     "appearanceTools": true,
     "layout": {
-      "contentSize": "840px",
-      "wideSize": "1200px"
+      "contentSize": "92%",
+      "wideSize": "1600px"
     },
     "typography": {
       "fontFamilies": [],
@@ -81,6 +99,7 @@
       }
     },
     "spacing": {
+      "blockGap": "0",
       "padding": {
         "left": "var(--wp--preset--spacing--50, 1rem)",
         "right": "var(--wp--preset--spacing--50, 1rem)"

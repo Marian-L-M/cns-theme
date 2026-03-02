@@ -1,2 +1,9 @@
 @charset "UTF-8";
 @use "variables" as var;
+
+footer {
+  background-color: black;
+  color: white;
+  margin: 0;
+  height: 5rem;
+}

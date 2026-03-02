@@ -1,9 +1,27 @@
-@charset "UTF-8";
-.layout-two-col {
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  &__column {
-    flex: 1 1 200px;
+#cns-layout-wrapper {
+}
+
+#cns-layout-wrapper {
+  padding: 2.4rem 0;
+  height: calc(100vh - 5rem - 5rem);
+  max-width: 192rem;
+  margin: auto;
+}
+.cns-col {
+  margin: 0;
+  &__wrapper {
+    // padding: 2rem 1rem 0;
+    align-self: stretch;
+    margin: 0;
+    height: 100%;
+  }
+  &__side {
+    max-width: 20rem;
+  }
+  &__wiki {
+    max-width: 34rem;
+  }
+  &__center {
+    padding: 1rem;
   }
 }

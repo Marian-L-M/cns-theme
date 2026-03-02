@@ -8,3 +8,40 @@
 @use "modules/menu-elements";
 
 // Map Elements
+
+*,
+*:before,
+*:after {
+  box-sizing: border-box;
+}
+
+body,
+html,
+main,
+ul,
+ol,
+li,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
+  padding: 0;
+  margin: 0;
+}
+
+/* Setup */
+html {
+  font-size: 62.5%;
+}
+body {
+  font-family: var(--font-st);
+  font-size: 1.4rem;
+  line-height: 160%;
+}
+
+a {
+  color: currentColor;
+}

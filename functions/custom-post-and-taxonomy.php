@@ -1,0 +1,105 @@
+<?php
+// Wiki as default post type
+
+function cns_post_tax_init()
+{
+    $labels = [
+        'name'                  => _x('Wikis', 'Post type general name', 'wiki'),
+        'singular_name'         => _x('Wiki', 'Post type singular name', 'wiki'),
+        'menu_name'             => _x('Wikis', 'Admin Menu text', 'wiki'),
+        'name_admin_bar'        => _x('Wiki', 'Add New on Toolbar', 'wiki'),
+        'add_new'               => __('Add New', 'wiki'),
+        'add_new_item'          => __('Add New wiki', 'wiki'),
+        'new_item'              => __('New wiki', 'wiki'),
+        'edit_item'             => __('Edit wiki', 'wiki'),
+        'view_item'             => __('View wiki', 'wiki'),
+        'all_items'             => __('All wikis', 'wiki'),
+        'search_items'          => __('Search wikis', 'wiki'),
+        'parent_item_colon'     => __('Parent wikis:', 'wiki'),
+        'not_found'             => __('No wikis found.', 'wiki'),
+        'not_found_in_trash'    => __('No wikis found in Trash.', 'wiki'),
+        'featured_image'        => _x('Wiki Cover Image', 'Overrides the “Featured Image” phrase for this post type. Added in 4.3', 'wiki'),
+        'set_featured_image'    => _x('Set cover image', 'Overrides the “Set featured image” phrase for this post type. Added in 4.3', 'wiki'),
+        'remove_featured_image' => _x('Remove cover image', 'Overrides the “Remove featured image” phrase for this post type. Added in 4.3', 'wiki'),
+        'use_featured_image'    => _x('Use as cover image', 'Overrides the “Use as featured image” phrase for this post type. Added in 4.3', 'wiki'),
+        'archives'              => _x('Wiki archives', 'The post type archive label used in nav menus. Default “Post Archives”. Added in 4.4', 'wiki'),
+        'insert_into_item'      => _x('Insert into wiki', 'Overrides the “Insert into post”/”Insert into page” phrase (used when inserting media into a post). Added in 4.4', 'wiki'),
+        'uploaded_to_this_item' => _x('Uploaded to this wiki', 'Overrides the “Uploaded to this post”/”Uploaded to this page” phrase (used when viewing media attached to a post). Added in 4.4', 'wiki'),
+        'filter_items_list'     => _x('Filter wikis list', 'Screen reader text for the filter links heading on the post type listing screen. Default “Filter posts list”/”Filter pages list”. Added in 4.4', 'wiki'),
+        'items_list_navigation' => _x('Wikis list navigation', 'Screen reader text for the pagination heading on the post type listing screen. Default “Posts list navigation”/”Pages list navigation”. Added in 4.4', 'wiki'),
+        'items_list'            => _x('Wikis list', 'Screen reader text for the items list heading on the post type listing screen. Default “Posts list”/”Pages list”. Added in 4.4', 'wiki'),
+    ];
+    $args = [
+        'labels'             => $labels,
+        'description'        => 'Wiki custom post type.',
+        'public'             => true,
+        'publicly_queryable' => true,
+        'show_ui'            => true,
+        'show_in_menu'       => true,
+        'query_var'          => true,
+        'rewrite'            => ['slug' => 'wiki'],
+        'capability_type'    => 'post',
+        'has_archive'        => true,
+        'hierarchical'       => false,
+        'menu_position'      => 20,
+        'supports'           => ['title', 'editor', 'author', 'thumbnail', 'excerpt'],
+        'taxonomies'         => ['category', 'post_tag'],
+        'show_in_rest'       => true,
+        // Block Template: defines the default block layout for new wiki posts.
+        // The 3-column structure is locked so editors cannot add, move, or remove
+        // the columns, but they can freely edit the content inside each column.
+        'template'           => [
+            [
+                'core/columns',
+                [
+                    'className' => 'cns-col__wrapper',
+                    'lock'      => ['move' => true, 'remove' => true],
+                ],
+                [
+                    // Left column — sidebar navigation (locked, structural)
+                    [
+                        'core/column',
+                        [
+                            'className' => 'cns-col cns-col__side cns-col__left',
+                            'lock'      => ['move' => true, 'remove' => true],
+                        ],
+                        [
+                            ['core/navigation', []],
+                        ],
+                    ],
+                    // Center column — main wiki content (locked container, free inner editing)
+                    [
+                        'core/column',
+                        [
+                            'className'    => 'cns-col cns-col__center',
+                            'lock'         => ['move' => true, 'remove' => true],
+                            'templateLock' => false,
+                        ],
+                        [
+                            ['core/heading', ['level' => 2, 'placeholder' => 'Section heading...']],
+                            ['core/paragraph', ['placeholder' => 'Start writing the wiki article...']],
+                        ],
+                    ],
+                    // Right column — per-post infobox (locked container, editable inner content)
+                    [
+                        'core/column',
+                        [
+                            'className'    => 'cns-col cns-col__side cns-col__right cns-col__wiki',
+                            'lock'         => ['move' => true, 'remove' => true],
+                            'templateLock' => false,
+                        ],
+                        [
+                            ['cns-theme/infobox', []],
+                        ],
+                    ],
+                ],
+            ],
+        ],
+        // 'insert' prevents adding new top-level blocks (outside the columns wrapper).
+        // Editors can still edit content inside the locked column blocks freely.
+        'template_lock'      => 'insert',
+    ];
+
+    register_post_type('wiki', $args);
+}
+add_action('init', 'cns_post_tax_init');

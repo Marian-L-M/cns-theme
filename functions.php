@@ -1,5 +1,8 @@
 <?php
 // Setup theme
+require get_theme_file_path("/functions/custom-post-and-taxonomy.php");
+
+// Old
 require get_theme_file_path("/functions/search-route.php");
 require get_theme_file_path("/functions/like-route.php");
 require get_theme_file_path("/functions/login-settings.php");
@@ -27,6 +30,12 @@ function load_project_files()
     wp_enqueue_style(
         "animation",
         get_template_directory_uri() . "/assets/css/animation.css",
+    );
+
+    // Global theme styles (compiled from src/scss/style.scss)
+    wp_enqueue_style(
+        "global_styles",
+        get_template_directory_uri() . "/build/index.css",
     );
 
     // Editor custom elements
@@ -73,8 +82,8 @@ function register_cns_theme_blocks()
     wp_localize_script("wp-editor", "cnsThemeData", [
         "theme_uri" => get_stylesheet_directory_uri(),
     ]);
-    register_block_type_from_metadata(__DIR__ . "/build/header");
-    register_block_type_from_metadata(__DIR__ . "/build/footer");
+    // register_block_type_from_metadata(__DIR__ . "/build/header");
+    // register_block_type_from_metadata(__DIR__ . "/build/footer");
     register_block_type_from_metadata(__DIR__ . "/build/banner");
     register_block_type_from_metadata(__DIR__ . "/build/slideshow");
     register_block_type_from_metadata(__DIR__ . "/build/slide");
