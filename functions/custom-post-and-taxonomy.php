@@ -45,29 +45,34 @@ function cns_post_tax_init()
         'supports'           => ['title', 'editor', 'author', 'thumbnail', 'excerpt'],
         'taxonomies'         => ['category', 'post_tag'],
         'show_in_rest'       => true,
-        // Block Template: defines the default block layout for new wiki posts.
-        // The 3-column structure is locked so editors cannot add, move, or remove
-        // the columns, but they can freely edit the content inside each column.
+        // Wiki - Three column standard layout
         'template'           => [
             [
                 'core/columns',
                 [
-                    'className' => 'cns-col__wrapper',
-                    'lock'      => ['move' => true, 'remove' => true],
+                    'className'    => 'cns-col__wrapper',
+                    'lock'         => ['move' => true, 'remove' => true],
+                    'templateLock' => 'all',
                 ],
                 [
-                    // Left column — sidebar navigation (locked, structural)
+                    // Left column — sidebar navigation
                     [
                         'core/column',
                         [
-                            'className' => 'cns-col cns-col__side cns-col__left',
-                            'lock'      => ['move' => true, 'remove' => true],
+                            'className'     => 'cns-col cns-col__side cns-col__left cns-sidebar',
+                            'lock'          => ['move' => true, 'remove' => true],
+                            'templateLock'  => false,
+                            'allowedBlocks' => ['core/list', 'core/heading'],
                         ],
                         [
-                            ['core/navigation', []],
+                            ['core/heading', ['level' => 3, 'content' => 'Navigation']],
+                            ['core/list', [], [
+                                ['core/list-item', ['content' => '<a href="/Wiki">Wiki</a>']],
+                                ['core/list-item', ['content' => '<a href="#">Link two</a>']],
+                            ]],
                         ],
                     ],
-                    // Center column — main wiki content (locked container, free inner editing)
+                    // Center column — content
                     [
                         'core/column',
                         [
@@ -76,11 +81,14 @@ function cns_post_tax_init()
                             'templateLock' => false,
                         ],
                         [
-                            ['core/heading', ['level' => 2, 'placeholder' => 'Section heading...']],
-                            ['core/paragraph', ['placeholder' => 'Start writing the wiki article...']],
+                            ['core/heading', ['level' => 2, 'content' => 'Introduction']],
+                            ['core/paragraph', ['placeholder' => 'Write a quick introduction on what this wiki article is about...']],
+                            ['core/separator', []],
+                            ['core/heading', ['level' => 2, 'placeholder' => 'Section Placeholder']],
+                            ['core/paragraph', ['placeholder' => 'Group your contents into easy sections']],
                         ],
                     ],
-                    // Right column — per-post infobox (locked container, editable inner content)
+                    // Right column — per-post infobox
                     [
                         'core/column',
                         [
@@ -95,8 +103,6 @@ function cns_post_tax_init()
                 ],
             ],
         ],
-        // 'insert' prevents adding new top-level blocks (outside the columns wrapper).
-        // Editors can still edit content inside the locked column blocks freely.
         'template_lock'      => 'insert',
     ];
 

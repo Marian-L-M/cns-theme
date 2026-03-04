@@ -1,40 +1,33 @@
 @charset "UTF-8";
-@use "variables" as var;
-@use "mixins" as mix;
+@use "./variables" as var;
+@use "./mixins" as mix;
 
+// flex
+header,
+header nav,
+header ul {
+  @include mix.fx($align: center);
+}
+
+// Components
 header {
-  // @include mix.fx(
-  //   $direction: row,
-  //   $align: center,
-  //   $justify: space-between,
-  //   $gap 2.4rem
-  // );
-  display: flex;
-  align-items: center;
   justify-content: space-between;
   gap: 2.4rem;
-
-  // position: sticky;
-  // top: 0;
-  // left: 0;
-  // z-index: 1000;
-  margin-block-start: 0;
 
   height: fit-content;
   width: 100%;
   padding: 1rem 2rem;
 
-  background-color: aliceblue;
+  background-color: var(--wp--preset--color--header-bg);
+  color: var(--wp--preset--color--header-text);
   nav,
   ul {
-    display: flex;
-    align-items: center;
     justify-content: center;
     gap: 1rem;
   }
   li a {
     font-size: clamp(1.6rem, 2vw, 2rem);
-    color: var.$main-text-color;
+    color: currentColor;
     padding: 0 1em;
   }
 }

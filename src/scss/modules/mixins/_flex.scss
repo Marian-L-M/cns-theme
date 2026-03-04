@@ -5,12 +5,21 @@
   $align: start,
   $justify: start,
   $wrap: nowrap,
-  $gap: 0
+  $gap: null,
+  $breakpoint: null
 ) {
   display: flex;
   flex-direction: $direction;
   flex-wrap: $wrap;
   align-items: $align;
   justify-content: $justify;
-  gap: $gap;
+  @if $gap != null {
+    gap: $gap;
+  }
+
+  @if $breakpoint != null {
+    @include breakpoint($breakpoint) {
+      @content;
+    }
+  }
 }

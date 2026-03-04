@@ -1,6 +1,7 @@
 <?php
 // Setup theme
 require get_theme_file_path("/functions/custom-post-and-taxonomy.php");
+// require get_theme_file_path("/functions/block-patterns.php");
 
 // Old
 require get_theme_file_path("/functions/search-route.php");
@@ -87,6 +88,8 @@ function register_cns_theme_blocks()
     register_block_type_from_metadata(__DIR__ . "/build/banner");
     register_block_type_from_metadata(__DIR__ . "/build/slideshow");
     register_block_type_from_metadata(__DIR__ . "/build/slide");
+    // Migrated blocks
     register_block_type_from_metadata(__DIR__ . "/build/infobox");
+    register_block_type_from_metadata(__DIR__ . "/build/sidebar");
 }
 add_action("init", "register_cns_theme_blocks");

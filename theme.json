@@ -78,13 +78,23 @@
         },
         {
           "slug": "background",
-          "color": "#FFFFFF",
+          "color": "#f3f3f3",
           "name": "Background"
         },
         {
           "slug": "foreground",
           "color": "#333333",
           "name": "Foreground"
+        },
+        {
+          "slug": "header-bg",
+          "color": "#23282d;",
+          "name": "Header-Bg"
+        },
+        {
+          "slug": "header-text",
+          "color": "#FFFFFF",
+          "name": "Header-Text"
         }
       ]
     }
