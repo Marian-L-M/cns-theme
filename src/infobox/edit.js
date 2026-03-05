@@ -1,5 +1,4 @@
 import apiFetch from "@wordpress/api-fetch";
-import { registerBlockType } from "@wordpress/blocks";
 import {
   useBlockProps,
   InnerBlocks,
@@ -30,7 +29,7 @@ export default function Edit(props) {
             method: "GET",
           });
           props.setAttributes({
-            imgURL: response.media_details.sizes.banner.source_url,
+            imgURL: response.media_details.sizes.medium_large.source_url,
           });
         }
         go();
@@ -67,7 +66,6 @@ export default function Edit(props) {
         ></div>
         <div className="infobox__content">
           <InnerBlocks
-            allowedBlocks={["core/paragraph", "core/heading", "core/list"]}
           />
         </div>
       </div>

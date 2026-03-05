@@ -13,6 +13,7 @@
       "type": "string"
     }
   },
+  "allowedBlocks":["cns-theme/infobox-group", "cns-theme/infobox-row", "core/paragraph", "core/heading", "core/list"],
   "editorScript": "file:./index.js",
   "style": "file:./style-index.css",
   "editorStyle": "file:./index.css",
