@@ -28,8 +28,8 @@ export default function Edit({ attributes, setAttributes }) {
                   {__("Background color", "block-development-examples")}
                 </legend>
                 <ColorPalette
-                  value={attributes.bg_color} // Element Tag for Gutenberg standard color selector
-                  onChange={onChangeBGColor} // onChange event callback
+                  value={attributes.bg_color}
+                  onChange={onChangeBGColor}
                 />
               </fieldset>
               <fieldset>
@@ -45,12 +45,7 @@ export default function Edit({ attributes, setAttributes }) {
           </PanelRow>
         </PanelBody>
       </InspectorControls>
-      <div
-        className="infobox-group"
-        style={{ backgroundColor: bg_color, color: text_color }}
-      >
-        <InnerBlocks />
-      </div>
+      <InnerBlocks />
     </div>
   );
 }

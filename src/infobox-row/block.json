@@ -11,6 +11,16 @@
 	"supports": {
 		"html": false
 	},
+	"attributes": {
+		"mode": {
+			"type": "string",
+			"default": "datalist"
+		},
+		"items": {
+			"type": "array",
+			"default": []
+		}
+	},
 	"textdomain": "infobox-row",
 	"editorScript": "file:./index.js",
 	"editorStyle": "file:./index.css",

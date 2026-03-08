@@ -1,12 +1,12 @@
-/**
- * The following styles get applied both on the front of your site
- * and in the editor.
- *
- * Replace them with your own styles or remove the file completely.
- */
+@charset "UTF-8";
+@use "../scss/modules/variables/" as var;
+@use "../scss/modules/mixins/" as mix;
 
 .wp-block-cns-theme-infobox-group {
-	background-color: #21759b;
-	color: #fff;
-	padding: 2px;
+  @include mix.fx($direction: column, $gap: 1rem);
+  width: 100%;
 }
+
+// .infobox-group {
+
+// }

@@ -7,9 +7,7 @@ export default function save({ attributes }) {
       {...useBlockProps.save()}
       style={{ backgroundColor: bg_color, color: text_color }}
     >
-      <div className="infobox-group">
-        <InnerBlocks.Content />
-      </div>
+      <InnerBlocks.Content />
     </div>
   );
 }

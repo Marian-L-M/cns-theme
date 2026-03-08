@@ -13,8 +13,8 @@
     "html": false
   },
   "attributes": {
-    "bg_color": { "type": "string", "default": "#ffffff" },
-    "text_color": { "type": "string", "default": "000000" }
+    "bg_color": { "type": "string", "default": "#f2f2f2" },
+    "text_color": { "type": "string", "default": "#000000" }
   },
   "textdomain": "infobox",
   "editorScript": "file:./index.js",
