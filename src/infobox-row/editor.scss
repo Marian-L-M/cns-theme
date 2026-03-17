@@ -17,9 +17,6 @@
   }
   &__item-actions {
     @include mix.fx($gap: 0.4rem);
-    position: absolute;
-    right: 0;
-    transform: translateX(100%);
     button {
       &.is-small {
         padding: 0;

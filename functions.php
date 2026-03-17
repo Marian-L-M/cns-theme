@@ -39,12 +39,6 @@ function load_project_files()
         get_template_directory_uri() . "/build/index.css",
     );
 
-    // Editor custom elements
-    wp_enqueue_style(
-        "custom_blocks",
-        get_template_directory_uri() . "/build/style-index.css",
-    );
-
     // Load Scripts
     wp_enqueue_script(
         "cns-theme-modules",
@@ -67,7 +61,7 @@ function theme_features()
     add_theme_support("title-tag");
     add_theme_support("post-thumbnails");
     add_theme_support("editor-styles");
-    add_editor_style(["build/style-index.css", "build/index.css"]);
+    add_editor_style(["build/index.css"]);
     add_image_size("banner", 1600, 600, true);
     // add_image_size("mobile", 600, 900, true);
     // add_image_size("banner-xl", 2400, 900, true);
@@ -90,6 +84,8 @@ function register_cns_theme_blocks()
     register_block_type_from_metadata(__DIR__ . "/build/slide");
     // Migrated blocks
     register_block_type_from_metadata(__DIR__ . "/build/infobox");
+    register_block_type_from_metadata(__DIR__ . "/build/infobox-group");
+    register_block_type_from_metadata(__DIR__ . "/build/infobox-row");
     register_block_type_from_metadata(__DIR__ . "/build/sidebar");
 }
 add_action("init", "register_cns_theme_blocks");

@@ -13,12 +13,15 @@
     "html": false
   },
   "attributes": {
+    "group_title": { "type": "string" },
+    "is_group_open": { "type": "boolean", "default": true },
     "bg_color": { "type": "string", "default": "#f2f2f2" },
-    "text_color": { "type": "string", "default": "#000000" }
+    "text_color": { "type": "string", "default": "#000000" },
+    "contrast_color": { "type": "string" }
   },
   "textdomain": "infobox",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "viewScript": "file:./view.js"
+  "viewScriptModule": "file:./view.js"
 }

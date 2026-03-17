@@ -1,72 +1,94 @@
-import apiFetch from "@wordpress/api-fetch";
+import { __ } from "@wordpress/i18n";
 import {
   useBlockProps,
   InnerBlocks,
   InspectorControls,
-  MediaUpload,
-  MediaUploadCheck,
+  ColorPalette,
 } from "@wordpress/block-editor";
-import { Button, Panel, PanelBody, PanelRow } from "@wordpress/components";
-import { useEffect } from "@wordpress/element";
+import { PanelBody, PanelRow, TextControl } from "@wordpress/components";
 
-export default function Edit(props) {
-  const blockProps = useBlockProps();
+export default function Edit({ attributes, setAttributes }) {
+  const { bg_color, text_color, contrast_color } = attributes;
+  const onChangeBGColor = (hexColor) => {
+    setAttributes({ bg_color: hexColor });
+  };
 
-  useEffect(function () {
-    if (!props.attributes.imgURL) {
-      props.setAttributes({
-        imgURL: cnsThemeData.theme_uri + "/assets/images/banner.png",
-      });
-    }
-  }, []);
+  const onChangeTextColor = (hexColor) => {
+    setAttributes({ text_color: hexColor });
+  };
+  const onChangeContrastColor = (hexColor) => {
+    setAttributes({ contrast_color: hexColor });
+  };
 
-  useEffect(
-    function () {
-      if (props.attributes.imgID) {
-        async function go() {
-          const response = await apiFetch({
-            path: `/wp/v2/media/${props.attributes.imgID}`,
-            method: "GET",
-          });
-          props.setAttributes({
-            imgURL: response.media_details.sizes.medium_large.source_url,
-          });
-        }
-        go();
-      }
-    },
-    [props.attributes.imgID],
-  );
-
-  function onFileSelect(x) {
-    props.setAttributes({ imgID: x.id });
+  function updateInfoboxTitle(value) {
+    setAttributes({ infobox_title: value });
   }
 
+  const TEMPLATE = [
+    ["core/image", {}],
+    [
+      "cns-theme/infobox-group",
+      {
+        group_title: "Infobox group title",
+      },
+    ],
+    ["core/paragraph", { placeholder: "Enter a short description..." }],
+  ];
+
   return (
-    <div {...blockProps}>
+    <div
+      {...useBlockProps()}
+      style={{ backgroundColor: bg_color, color: text_color }}
+    >
       <InspectorControls>
-        <PanelBody title="Infobox Image" initialOpen={true}>
+        <PanelBody title="Infobox Settings" initialOpen={true}>
           <PanelRow>
-            <MediaUploadCheck>
-              <MediaUpload
-                onSelect={onFileSelect}
-                value={props.attributes.imgID}
-                render={({ open }) => {
-                  return <Button onClick={open}>Choose image</Button>;
-                }}
-              />
-            </MediaUploadCheck>
+            <div>
+              <fieldset>
+                <legend className="blocks-base-control__label">
+                  {__("Background color", "block-development-examples")}
+                </legend>
+                <ColorPalette
+                  value={attributes.bg_color}
+                  onChange={onChangeBGColor}
+                />
+              </fieldset>
+              <fieldset>
+                <legend className="blocks-base-control__label">
+                  {__("Text color", "block-development-examples")}
+                </legend>
+                <ColorPalette
+                  value={attributes.text_color}
+                  onChange={onChangeTextColor}
+                />
+              </fieldset>
+              <fieldset>
+                <legend className="blocks-base-control__label">
+                  {__("Contrast color", "block-development-examples")}
+                </legend>
+                <ColorPalette
+                  value={attributes.contrast_color}
+                  onChange={onChangeContrastColor}
+                />
+              </fieldset>
+            </div>
           </PanelRow>
         </PanelBody>
       </InspectorControls>
       <div className="infobox">
-        <div
-          className="infobox__image"
-          style={{ backgroundImage: `url(${props.attributes.imgURL})` }}
-        ></div>
-        <div className="infobox__content">
-          <InnerBlocks
+        <h2
+          className="infobox__title"
+          style={{ backgroundColor: contrast_color }}
+        >
+          <TextControl
+            placeholder="Infobox title"
+            value={attributes.infobox_title}
+            onChange={updateInfoboxTitle}
+            style={{ fontSize: "20px", color: text_color }}
           />
+        </h2>
+        <div className="infobox__content">
+          <InnerBlocks template={TEMPLATE} />
         </div>
       </div>
     </div>

@@ -14,7 +14,7 @@
   "author": "Marian Maschke",
   "main": "index.js",
   "scripts": {
-    "start": "wp-scripts start",
+    "start": "wp-scripts start --experimental-modules",
     "blocks": "wp-scripts start --experimental-modules",
     "build": "npm run buildIndex && npm run buildBlocks",
     "buildIndex": "wp-scripts build src/index.js",

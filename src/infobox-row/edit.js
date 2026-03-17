@@ -17,40 +17,38 @@ import {
 } from "@wordpress/components";
 import "./editor.scss";
 
-const MODES = [
-  { label: __("Datalist", "infobox-row"), value: "datalist" },
-  { label: __("Table", "infobox-row"), value: "table" },
-];
-
 export default function Edit({ attributes, setAttributes }) {
-  const { mode, items } = attributes;
+  const DRAFT_DEFAULTS = {
+    title: "",
+    text: "",
+    linkUrl: "",
+    linkText: "",
+    linkNewTab: false,
+    order: 0,
+  };
 
+  const { items } = attributes;
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [draftTitel, setDraftTitle] = useState("");
-  const [draftText, setDraftText] = useState("");
-  const [draftLinkUrl, setDraftLinkUrl] = useState("");
-  const [draftLinkText, setDraftLinkText] = useState("");
-  const [draftLinkNewTab, setDraftLinkNewTab] = useState(false);
+  const [draft, setDraft] = useState(DRAFT_DEFAULTS);
 
   function openAddModal() {
+    setDraft(DRAFT_DEFAULTS);
     setEditingIndex(null);
-    setDraftTitle("");
-    setDraftText("");
-    setDraftLinkUrl("");
-    setDraftLinkText("");
-    setDraftLinkNewTab(false);
     setIsModalOpen(true);
   }
 
   function openEditModal(index) {
     const item = items[index];
+    setDraft({
+      title: item.dt,
+      text: item.ddText,
+      linkUrl: item.linkUrl || "",
+      linkText: item.linkText || "",
+      linkNewTab: item.linkNewTab || false,
+      order: item.order ?? 0,
+    });
     setEditingIndex(index);
-    setDraftTitle(item.dt);
-    setDraftText(item.ddText);
-    setDraftLinkUrl(item.linkUrl || "");
-    setDraftLinkText(item.linkText || "");
-    setDraftLinkNewTab(item.linkNewTab || false);
     setIsModalOpen(true);
   }
 
@@ -61,11 +59,12 @@ export default function Edit({ attributes, setAttributes }) {
   function saveItem() {
     const newItem = {
       id: editingIndex !== null ? items[editingIndex].id : String(Date.now()),
-      dt: draftTitel,
-      ddText: draftText,
-      linkUrl: draftLinkUrl,
-      linkText: draftLinkText,
-      linkNewTab: draftLinkNewTab,
+      dt: draft.title,
+      ddText: draft.text,
+      linkUrl: draft.linkUrl,
+      linkText: draft.linkText,
+      linkNewTab: draft.linkNewTab,
+      order: draft.order,
     };
 
     if (editingIndex !== null) {
@@ -91,12 +90,12 @@ export default function Edit({ attributes, setAttributes }) {
           initialOpen={true}
         >
           <PanelRow>
-            <SelectControl
+            {/* <SelectControl
               label={__("Display Mode", "infobox-row")}
               value={mode}
               options={MODES}
               onChange={(value) => setAttributes({ mode: value })}
-            />
+            /> */}
           </PanelRow>
         </PanelBody>
       </InspectorControls>
@@ -113,13 +112,15 @@ export default function Edit({ attributes, setAttributes }) {
         >
           <TextControl
             label={__("Title", "infobox-row")}
-            value={draftTitel}
-            onChange={setDraftTitle}
+            value={draft.title}
+            onChange={(value) =>
+              setDraft((prev) => ({ ...prev, title: value }))
+            }
           />
           <TextareaControl
             label={__("Description", "infobox-row")}
-            value={draftText}
-            onChange={setDraftText}
+            value={draft.text}
+            onChange={(value) => setDraft((prev) => ({ ...prev, text: value }))}
             rows={4}
           />
           <div className="infobox-row__url-field">
@@ -127,23 +128,29 @@ export default function Edit({ attributes, setAttributes }) {
               {__("Search post or add url", "infobox-row")}
             </label>
             <URLInput
-              value={draftLinkUrl}
-              onChange={(url) => setDraftLinkUrl(url)}
+              value={draft.linkUrl}
+              onChange={(url) =>
+                setDraft((prev) => ({ ...prev, linkUrl: url }))
+              }
               placeholder={__("Search pages or paste URL…", "infobox-row")}
             />
           </div>
-          {draftLinkUrl && (
+          {draft.linkUrl && (
             <>
               <TextControl
                 label={__("Link text", "infobox-row")}
-                value={draftLinkText}
-                onChange={setDraftLinkText}
+                value={draft.linkText}
+                onChange={(value) =>
+                  setDraft((prev) => ({ ...prev, linkText: value }))
+                }
                 placeholder={__("Defaults to URL if empty", "infobox-row")}
               />
               <ToggleControl
                 label={__("Open in new tab", "infobox-row")}
-                checked={draftLinkNewTab}
-                onChange={setDraftLinkNewTab}
+                checked={draft.linkNewTab}
+                onChange={(value) =>
+                  setDraft((prev) => ({ ...prev, linkNewTab: value }))
+                }
               />
             </>
           )}
@@ -184,8 +191,8 @@ export default function Edit({ attributes, setAttributes }) {
                   onClick={() => openEditModal(index)}
                 >
                   <svg
-                    width="24px"
-                    height="24px"
+                    width="16px"
+                    height="16px"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -193,7 +200,7 @@ export default function Edit({ attributes, setAttributes }) {
                     <path
                       d="M12 3.99997H6C4.89543 3.99997 4 4.8954 4 5.99997V18C4 19.1045 4.89543 20 6 20H18C19.1046 20 20 19.1045 20 18V12M18.4142 8.41417L19.5 7.32842C20.281 6.54737 20.281 5.28104 19.5 4.5C18.7189 3.71895 17.4526 3.71895 16.6715 4.50001L15.5858 5.58575M18.4142 8.41417L12.3779 14.4505C12.0987 14.7297 11.7431 14.9201 11.356 14.9975L8.41422 15.5858L9.00257 12.6441C9.08001 12.2569 9.27032 11.9013 9.54951 11.6221L15.5858 5.58575M18.4142 8.41417L15.5858 5.58575"
                       stroke="#000000"
-                      stroke-width="2"
+                      stroke-width="1"
                       stroke-linecap="round"
                       stroke-linejoin="round"
                     />
@@ -206,8 +213,8 @@ export default function Edit({ attributes, setAttributes }) {
                   onClick={() => removeItem(index)}
                 >
                   <svg
-                    width="24px"
-                    height="24px"
+                    width="16px"
+                    height="16px"
                     viewBox="0 0 24 24"
                     fill="none"
                     xmlns="http://www.w3.org/2000/svg"
@@ -231,7 +238,7 @@ export default function Edit({ attributes, setAttributes }) {
         onClick={openAddModal}
         className="infobox-row__add-btn"
       >
-        + Add info row
+        + Add row
       </Button>
     </div>
   );

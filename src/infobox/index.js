@@ -1,13 +1,9 @@
-import { InnerBlocks } from "@wordpress/block-editor";
 import { registerBlockType } from "@wordpress/blocks";
 import metadata from "./block.json";
 import Edit from "./edit";
-import "./style.scss";
-import "./editor.scss";
+import save from "./save";
 
 registerBlockType(metadata.name, {
   edit: Edit,
-  save: function () {
-    return <InnerBlocks.Content />;
-  },
+  save,
 });

@@ -1,2 +1,8 @@
 @charset "UTF-8";
 @use "scss/shared";
+
+.infobox__inner {
+  &.is-hidden {
+    display: none;
+  }
+}

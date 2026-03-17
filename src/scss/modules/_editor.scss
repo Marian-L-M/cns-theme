@@ -1,0 +1,12 @@
+@charset "UTF-8";
+@use "variables" as var;
+
+.editor-post-title {
+  margin-bottom: 2rem;
+}
+
+.block-editor-block-list {
+  &__layout {
+    // margin-top: 2rem;
+  }
+}

@@ -2,20 +2,41 @@
   "$schema": "https://schemas.wp.org/trunk/block.json",
   "apiVersion": 3,
   "name": "cns-theme/infobox",
+  "version": "0.1.0",
   "title": "CNS Infobox",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "Wikipedia style infobox",
+  "example": {},
   "supports": {
-    "align": ["full"]
+    "html": false,
+    "interactivity": true
   },
   "attributes": {
-    "align": { "type": "string", "default": "full" },
-    "imgID": { "type": "number" },
-    "imgURL": {
-      "type": "string"
-    }
+    "infobox_title": { "type": "string" },
+    "is_infobox_open": { "type": "boolean", "default": true },
+    "bg_color": {
+      "type": "string",
+      "default": "var(--wp--preset--color--element-bg)"
+    },
+    "text_color": {
+      "type": "string",
+      "default": "var(--wp--preset--color--text)"
+    },
+    "contrast_color": { "type": "string" },
+    "align": { "type": "string", "default": "full" }
   },
-  "allowedBlocks":["cns-theme/infobox-group", "cns-theme/infobox-row", "core/paragraph", "core/heading", "core/list"],
+  "allowedBlocks": [
+    "cns-theme/infobox-group",
+    "cns-theme/infobox-row",
+    "core/paragraph",
+    "core/heading",
+    "core/list",
+    "core/image"
+  ],
+  "textdomain": "infobox",
   "editorScript": "file:./index.js",
-  "style": "file:./style-index.css",
   "editorStyle": "file:./index.css",
-  "render": "file:./render.php"
+  "style": "file:./style-index.css",
+  "viewScriptModule": "file:./view.js"
 }

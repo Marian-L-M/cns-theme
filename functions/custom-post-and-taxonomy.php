@@ -65,7 +65,6 @@ function cns_post_tax_init()
                             'allowedBlocks' => ['core/list', 'core/heading'],
                         ],
                         [
-                            ['core/heading', ['level' => 3, 'content' => 'Navigation']],
                             ['core/list', [], [
                                 ['core/list-item', ['content' => '<a href="/Wiki">Wiki</a>']],
                                 ['core/list-item', ['content' => '<a href="#">Link two</a>']],
@@ -81,6 +80,7 @@ function cns_post_tax_init()
                             'templateLock' => false,
                         ],
                         [
+                            ['core/post-title', ['level' => 1]],
                             ['core/heading', ['level' => 2, 'content' => 'Introduction']],
                             ['core/paragraph', ['placeholder' => 'Write a quick introduction on what this wiki article is about...']],
                             ['core/separator', []],
