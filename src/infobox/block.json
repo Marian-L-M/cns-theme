@@ -13,18 +13,25 @@
     "interactivity": true
   },
   "attributes": {
-    "infobox_title": { "type": "string" },
-    "is_infobox_open": { "type": "boolean", "default": true },
+    "align": { "type": "string", "default": "full" },
     "bg_color": {
       "type": "string",
       "default": "var(--wp--preset--color--element-bg)"
     },
+    "contrast_color": {
+      "type": "string",
+      "default": "var(--wp--preset--element-bg)"
+    },
+    "infobox_title": { "type": "string" },
+    "is_infobox_open": { "type": "boolean", "default": true },
+    "mobile_display_mode": {
+      "type": "string",
+      "default": "collapse__groups"
+    },
     "text_color": {
       "type": "string",
       "default": "var(--wp--preset--color--text)"
-    },
-    "contrast_color": { "type": "string" },
-    "align": { "type": "string", "default": "full" }
+    }
   },
   "allowedBlocks": [
     "cns-theme/infobox-group",

@@ -14,7 +14,6 @@
   margin: 0;
   padding: 0 1rem;
   &__wrapper {
-    height: 100%;
     padding: 0;
     gap: 4rem 1rem;
     align-self: stretch;
@@ -45,6 +44,7 @@
   .cns-col {
     order: unset;
     &__wrapper {
+      height: 100%;
     }
     &__wiki {
     }

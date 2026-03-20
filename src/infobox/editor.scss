@@ -1,2 +1,10 @@
 @charset "UTF-8";
-@use "scss/shared";
+
+.infobox {
+  h2 {
+    min-height: unset;
+  }
+  &__title {
+    padding: 0.4rem;
+  }
+}

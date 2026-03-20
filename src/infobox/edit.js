@@ -5,10 +5,14 @@ import {
   InspectorControls,
   ColorPalette,
 } from "@wordpress/block-editor";
+import { SelectControl } from "@wordpress/components";
 import { PanelBody, PanelRow, TextControl } from "@wordpress/components";
+import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-  const { bg_color, text_color, contrast_color } = attributes;
+  const { bg_color, text_color, contrast_color, mobile_display_mode } =
+    attributes;
+
   const onChangeBGColor = (hexColor) => {
     setAttributes({ bg_color: hexColor });
   };
@@ -41,7 +45,7 @@ export default function Edit({ attributes, setAttributes }) {
       style={{ backgroundColor: bg_color, color: text_color }}
     >
       <InspectorControls>
-        <PanelBody title="Infobox Settings" initialOpen={true}>
+        <PanelBody title="Color Settings" initialOpen={true}>
           <PanelRow>
             <div>
               <fieldset>
@@ -72,6 +76,23 @@ export default function Edit({ attributes, setAttributes }) {
                 />
               </fieldset>
             </div>
+          </PanelRow>
+        </PanelBody>
+        <PanelBody title="Display Settings" initialOpen={false}>
+          <PanelRow>
+            <SelectControl
+              label={__("Mobile display", "infobox")}
+              value={attributes.mobile_display_mode}
+              options={[
+                { label: "Collapse Groups", value: "collapse__groups" },
+                { label: "Collapse All", value: "collapse__all" },
+                { label: "Expanded", value: "expanded" },
+              ]}
+              onChange={(value) =>
+                setAttributes({ mobile_display_mode: value })
+              }
+              __next40pxDefaultSize
+            />
           </PanelRow>
         </PanelBody>
       </InspectorControls>
