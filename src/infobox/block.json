@@ -20,13 +20,13 @@
     },
     "contrast_color": {
       "type": "string",
-      "default": "var(--wp--preset--element-bg)"
+      "default": "var(--wp--preset--color--element-contrast)"
     },
     "infobox_title": { "type": "string" },
     "is_infobox_open": { "type": "boolean", "default": true },
-    "mobile_display_mode": {
+    "display_mode": {
       "type": "string",
-      "default": "collapse__groups"
+      "default": "collapse__groups-mobile"
     },
     "text_color": {
       "type": "string",

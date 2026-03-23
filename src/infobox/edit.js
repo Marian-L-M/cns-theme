@@ -5,13 +5,16 @@ import {
   InspectorControls,
   ColorPalette,
 } from "@wordpress/block-editor";
-import { SelectControl } from "@wordpress/components";
-import { PanelBody, PanelRow, TextControl } from "@wordpress/components";
+import {
+  SelectControl,
+  PanelBody,
+  PanelRow,
+  TextControl,
+} from "@wordpress/components";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-  const { bg_color, text_color, contrast_color, mobile_display_mode } =
-    attributes;
+  const { bg_color, text_color, contrast_color, display_mode } = attributes;
 
   const onChangeBGColor = (hexColor) => {
     setAttributes({ bg_color: hexColor });
@@ -45,9 +48,36 @@ export default function Edit({ attributes, setAttributes }) {
       style={{ backgroundColor: bg_color, color: text_color }}
     >
       <InspectorControls>
-        <PanelBody title="Color Settings" initialOpen={true}>
+        <PanelBody title="Display Settings" initialOpen={true}>
+          <PanelRow>
+            <SelectControl
+              label={__("Mobile display", "infobox")}
+              value={attributes.display_mode}
+              options={[
+                {
+                  label: "Collapse Groups on Mobile",
+                  value: "collapse__groups-mobile",
+                },
+                { label: "Always Collapse Groups", value: "collapse__groups" },
+                {
+                  label: "Collapse Everything on Mobile",
+                  value: "collapse__all-mobile",
+                },
+                {
+                  label: "Always Collapse Everything",
+                  value: "collapse__all",
+                },
+                { label: "Always Expanded", value: "expanded__all" },
+              ]}
+              onChange={(value) => setAttributes({ display_mode: value })}
+              __next40pxDefaultSize
+            />
+          </PanelRow>
+        </PanelBody>
+        <PanelBody title="Color Settings" initialOpen={false}>
           <PanelRow>
             <div>
+              <h1>Test v002</h1>
               <fieldset>
                 <legend className="blocks-base-control__label">
                   {__("Background color", "block-development-examples")}
@@ -76,23 +106,6 @@ export default function Edit({ attributes, setAttributes }) {
                 />
               </fieldset>
             </div>
-          </PanelRow>
-        </PanelBody>
-        <PanelBody title="Display Settings" initialOpen={false}>
-          <PanelRow>
-            <SelectControl
-              label={__("Mobile display", "infobox")}
-              value={attributes.mobile_display_mode}
-              options={[
-                { label: "Collapse Groups", value: "collapse__groups" },
-                { label: "Collapse All", value: "collapse__all" },
-                { label: "Expanded", value: "expanded" },
-              ]}
-              onChange={(value) =>
-                setAttributes({ mobile_display_mode: value })
-              }
-              __next40pxDefaultSize
-            />
           </PanelRow>
         </PanelBody>
       </InspectorControls>
