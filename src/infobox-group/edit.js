@@ -10,12 +10,13 @@ import {
   Panel,
   PanelBody,
   PanelRow,
+  SelectControl,
   TextControl,
 } from "@wordpress/components";
 import "./editor.scss";
 
 export default function Edit({ attributes, setAttributes }) {
-  const { bg_color, text_color, contrast_color } = attributes;
+  const { bg_color, text_color, contrast_color, display_mode } = attributes;
   const onChangeBGColor = (hexColor) => {
     setAttributes({ bg_color: hexColor });
   };
@@ -39,6 +40,20 @@ export default function Edit({ attributes, setAttributes }) {
     >
       <InspectorControls>
         <PanelBody title="Infobox Group Settings" initialOpen={true}>
+          <PanelRow>
+            <SelectControl
+              label={__("Dsplay Mode", "infobox")}
+              value={attributes.display_mode}
+              options={[
+                { label: "Inherit", value: "inherit" },
+                { label: "Collapse Default", value: "collapse-ibg__default" },
+                { label: "Collapse Mobile", value: "collapse-ibg__mobile" },
+                { label: "Never Collapse", value: "collapse-ibg__never" },
+              ]}
+              onChange={(value) => setAttributes({ display_mode: value })}
+              __next40pxDefaultSize
+            />
+          </PanelRow>
           <PanelRow>
             <div>
               <fieldset>

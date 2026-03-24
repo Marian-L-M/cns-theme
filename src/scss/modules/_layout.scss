@@ -7,7 +7,9 @@
   height: calc(100vh - 5rem - 5rem);
   max-width: 192rem;
   margin: auto;
+
   background-color: var(--wp--preset--color--background);
+  overflow: scroll;
 }
 
 .cns-col {

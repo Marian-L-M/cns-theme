@@ -104,7 +104,12 @@
         {
           "slug": "element-bg",
           "color": "#f2f2f2",
-          "name": "Header-Text"
+          "name": "Element bg"
+        },
+        {
+          "slug": "element-contrast",
+          "color": "#e2e2e2",
+          "name": "Element contrast"
         },
         {
           "slug": "element-border",
