@@ -93,30 +93,35 @@
         },
         {
           "slug": "header-bg",
-          "color": "#23282d;",
-          "name": "Header-Bg"
+          "color": "#e2e2e2;",
+          "name": "Header Background"
         },
         {
           "slug": "header-text",
-          "color": "#FFFFFF",
-          "name": "Header-Text"
+          "color": "#23282d",
+          "name": "Header Text"
         },
         {
           "slug": "element-bg",
           "color": "#f2f2f2",
-          "name": "Element bg"
+          "name": "Elements background"
         },
         {
           "slug": "element-contrast",
           "color": "#e2e2e2",
-          "name": "Element contrast"
+          "name": "Elements contrast"
         },
         {
           "slug": "element-border",
           "color": "#9b9b9b",
-          "name": "Header-Text"
+          "name": "Elements border"
         }
       ]
+    },
+    "custom": {
+      "header": {
+        "height": "5rem"
+      }
     }
   },
   "styles": {
