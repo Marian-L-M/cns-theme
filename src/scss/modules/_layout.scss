@@ -23,11 +23,11 @@
     overflow-y: scroll;
   }
   &__side {
-    max-width: 20rem;
+    max-width: var(--wp--custom--layout--col-side);
     order: 1;
   }
   &__wiki {
-    max-width: 34rem;
+    max-width: var(--wp--custom--layout--col-wiki);
     order: 2;
   }
   &__center {

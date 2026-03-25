@@ -77,7 +77,7 @@ function register_cns_theme_blocks()
     wp_localize_script("wp-editor", "cnsThemeData", [
         "theme_uri" => get_stylesheet_directory_uri(),
     ]);
-    // register_block_type_from_metadata(__DIR__ . "/build/header");
+    register_block_type_from_metadata(__DIR__ . "/build/cns-header");
     // register_block_type_from_metadata(__DIR__ . "/build/footer");
     register_block_type_from_metadata(__DIR__ . "/build/banner");
     register_block_type_from_metadata(__DIR__ . "/build/slideshow");
@@ -86,6 +86,6 @@ function register_cns_theme_blocks()
     register_block_type_from_metadata(__DIR__ . "/build/infobox");
     register_block_type_from_metadata(__DIR__ . "/build/infobox-group");
     register_block_type_from_metadata(__DIR__ . "/build/infobox-row");
-    register_block_type_from_metadata(__DIR__ . "/build/sidebar");
+    register_block_type_from_metadata(__DIR__ . "/build/sidebar");;
 }
 add_action("init", "register_cns_theme_blocks");

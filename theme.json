@@ -121,6 +121,10 @@
     "custom": {
       "header": {
         "height": "5rem"
+      },
+      "layout": {
+        "col-side": "20rem",
+        "col-wiki": "34rem"
       }
     }
   },
