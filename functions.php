@@ -78,6 +78,7 @@ function register_cns_theme_blocks()
         "theme_uri" => get_stylesheet_directory_uri(),
     ]);
     register_block_type_from_metadata(__DIR__ . "/build/cns-header");
+    register_block_type_from_metadata(__DIR__ . "/build/cns-header-nav");
     // register_block_type_from_metadata(__DIR__ . "/build/footer");
     register_block_type_from_metadata(__DIR__ . "/build/banner");
     register_block_type_from_metadata(__DIR__ . "/build/slideshow");
