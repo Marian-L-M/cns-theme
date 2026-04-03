@@ -87,6 +87,11 @@
           "name": "Text"
         },
         {
+          "slug": "text-negative",
+          "color": "#ffffff",
+          "name": "Text Negative"
+        },
+        {
           "slug": "foreground",
           "color": "#333333",
           "name": "Foreground"
