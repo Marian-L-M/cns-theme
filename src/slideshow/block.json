@@ -3,8 +3,14 @@
   "apiVersion": 3,
   "name": "cns-theme/slideshow",
   "title": "CNS Slideshow",
+  "category": "widgets",
+  "icon": "smiley",
+  "description": "An slideshow banner block",
+  "example": {},
   "supports": {
-    "align": ["full"]
+    "align": ["full"],
+    "html": false,
+    "interactivity": true
   },
   "attributes": {
     "align": { "type": "string", "default": "full" },
@@ -13,8 +19,10 @@
       "type": "string"
     }
   },
+  "textdomain": "cns-theme",
   "editorScript": "file:./index.js",
   "style": "file:./style-index.css",
   "editorStyle": "file:./index.css",
-  "render": "file:./render.php"
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js"
 }

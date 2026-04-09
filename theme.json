@@ -34,6 +34,7 @@
       "wideSize": "1600px"
     },
     "typography": {
+      "fluid": true,
       "fontFamilies": [],
       "fontStyle": false,
       "fontWeight": false,
@@ -43,7 +44,20 @@
       "textTransform": false,
       "dropCap": false,
       "customFontSize": false,
-      "fontSizes": []
+      "fontSizes": [
+        {
+          "slug": "large",
+          "size": "clamp(1.6rem, 2.2vw, 1.8rem)"
+        },
+        {
+          "slug": "medium",
+          "size": "clamp(1.4rem, 2vw, 1.6rem)"
+        },
+        {
+          "slug": "small",
+          "size": "clamp(1.3rem, 1.8vw, 1.5rem)"
+        }
+      ]
     },
     "blocks": {
       "core/button": {
@@ -68,17 +82,17 @@
       "palette": [
         {
           "slug": "primary",
-          "color": "#0d3b66",
+          "color": "#4E16A8",
           "name": "Primary"
         },
         {
           "slug": "secondary",
-          "color": "#ee964b",
+          "color": "#2F5281",
           "name": "Secondary"
         },
         {
           "slug": "background",
-          "color": "#f3f3f3",
+          "color": "#FFFFFF",
           "name": "Background"
         },
         {
@@ -87,9 +101,19 @@
           "name": "Text"
         },
         {
-          "slug": "text-negative",
-          "color": "#ffffff",
-          "name": "Text Negative"
+          "slug": "text-soft",
+          "color": "#4a4a4a",
+          "name": "Text"
+        },
+        {
+          "slug": "text-muted",
+          "color": "#A2A2A2",
+          "name": "Text"
+        },
+        {
+          "slug": "text-negative-80",
+          "color": "rgba(255, 255, 255, 0.8)",
+          "name": "Text Negative 80%"
         },
         {
           "slug": "foreground",
@@ -98,17 +122,17 @@
         },
         {
           "slug": "header-bg",
-          "color": "#e2e2e2;",
+          "color": "#ffffff",
           "name": "Header Background"
         },
         {
           "slug": "header-text",
-          "color": "#23282d",
+          "color": "#000000",
           "name": "Header Text"
         },
         {
           "slug": "element-bg",
-          "color": "#f2f2f2",
+          "color": "#f5f5f5",
           "name": "Elements background"
         },
         {

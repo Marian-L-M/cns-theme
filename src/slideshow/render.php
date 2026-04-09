@@ -5,11 +5,13 @@
 <?php if (!isset($attributes["imgURL"])) {
     $attributes["imgURL"] = get_theme_file_uri("/assets/images/banner.png");
 } ?>
-<div class="glide">
-  <div class="glide__track" data-glide-el="track">
-    <ul class="glide__slides">
-    <?php echo $content; ?>
-    </ul>
+<div class="cns-slideshow__wrapper">
+  <div class="glide">
+    <div class="glide__track" data-glide-el="track">
+      <ul class="glide__slides">
+      <?php echo $content; ?>
+      </ul>
+    </div>
   </div>
 </div>
 

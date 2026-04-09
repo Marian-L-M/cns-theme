@@ -5,9 +5,11 @@ export default function Edit() {
 
   return (
     <div {...blockProps}>
-      <div className="slideshow__container">
-        <p className="slideshow__title">Slideshow</p>
-        <InnerBlocks allowedBlocks={["cns-theme/slide"]} />
+      <div class="cns-slideshow__wrapper">
+        <div className="slideshow__container">
+          <h3 className="slideshow__title">Add slides below</h3>
+          <InnerBlocks allowedBlocks={["cns-theme/slide"]} />
+        </div>
       </div>
     </div>
   );

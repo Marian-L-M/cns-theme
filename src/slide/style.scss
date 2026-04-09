@@ -1,2 +1,7 @@
 @charset "UTF-8";
-@use "scss/shared";
+
+.slideshow {
+  &__slide {
+    aspect-ratio: 5 / 1;
+  }
+}
