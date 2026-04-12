@@ -30,7 +30,7 @@
   }
   &__add-btn {
     position: absolute;
-    bottom: 0;
+    bottom: -5px;
     right: 0;
     transform: translateY(100%);
   }
@@ -44,6 +44,13 @@
       padding: 1rem 2rem;
       border: 1px solid black;
       &.user-btn {
+        height: 4rem;
+        width: 4rem;
+        padding: 0.5rem;
+        border-radius: 50%;
+        svg {
+          width: max-content;
+        }
       }
       &.hamburger-btn {
         display: none;
