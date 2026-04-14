@@ -9,16 +9,17 @@ npm run start
 npm run blocks
 ```
 
-Run to build out theme JS functionality
+Run to build out theme JS & SCSS functionality
 
 ```
-npm run buildIndex
+npm run watchIndex
 ```
 
 Run to build theme blocks
 
 ```
 npm run buildBlocks
+npm run buildBlocks -- --watch
 ```
 
 Run to build theme blocks and theme JS functionality

@@ -9,7 +9,8 @@
   "description": "Navigation Block for the CNS theme header",
   "example": {},
   "supports": {
-    "html": false
+    "html": false,
+    "align": ["left", "center", "right"]
   },
   "attributes": {
     "mode": {

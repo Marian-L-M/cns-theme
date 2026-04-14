@@ -29,6 +29,9 @@
   "settings": {
     "useRootPaddingAwareAlignments": true,
     "appearanceTools": true,
+    "spacing": {
+      "blockGap": true
+    },
     "layout": {
       "contentSize": "92%",
       "wideSize": "1600px"
@@ -167,7 +170,6 @@
       }
     },
     "spacing": {
-      "blockGap": "0",
       "padding": {
         "left": "var(--wp--preset--spacing--50, 1rem)",
         "right": "var(--wp--preset--spacing--50, 1rem)"
