@@ -15,11 +15,16 @@
     "items": {
       "type": "array",
       "default": []
+    },
+    "icon": {
+      "type": "string",
+      "default": "user"
     }
   },
   "textdomain": "cns-theme",
   "editorScript": "file:./index.js",
   "editorStyle": "file:./index.css",
   "style": "file:./style-index.css",
-  "render": "file:./render.php"
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js"
 }

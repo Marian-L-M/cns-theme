@@ -71,8 +71,10 @@ const TEMPLATE = [
           [
             "core/group",
             {
+              anchor: "menu-wrapper",
               align: "full",
               layout: { type: "flex", flexWrap: "nowrap" },
+              style: { spacing: { blockGap: "2rem" } },
             },
             [
               ["cns-theme/cns-header-nav", {}, []],
