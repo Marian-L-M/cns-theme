@@ -4,6 +4,7 @@ import {
   useBlockProps,
   InspectorControls,
   URLInput,
+  BlockControls,
 } from "@wordpress/block-editor";
 import {
   Button,
@@ -12,6 +13,8 @@ import {
   PanelRow,
   SelectControl,
   TextControl,
+  ToolbarGroup,
+  ToolbarButton,
 } from "@wordpress/components";
 import "./editor.scss";
 
@@ -77,6 +80,7 @@ export default function Edit({ attributes, setAttributes }) {
 
   return (
     <div {...useBlockProps()}>
+      {/* Sidebar menu */}
       <InspectorControls>
         <PanelBody title={__("Mode Settings", "cns-theme")} initialOpen={false}>
           <PanelRow>
@@ -99,12 +103,24 @@ export default function Edit({ attributes, setAttributes }) {
           </PanelRow>
         </PanelBody>
       </InspectorControls>
+      {/* Block menu */}
+      <BlockControls>
+        <ToolbarGroup>
+          <ToolbarButton
+            label={__("Add link", "cns-theme")}
+            onClick={openAddModal}
+          >
+            {__("Add link", "cns-theme")}
+          </ToolbarButton>
+        </ToolbarGroup>
+      </BlockControls>
+      {/* Item Modal */}
       {isModalOpen && (
         <Modal
           title={
             editingIndex !== null
-              ? __("Edit Item", "cns-theme")
-              : __("Add Item", "cns-theme")
+              ? __("Edit Link", "cns-theme")
+              : __("Add Link", "cns-theme")
           }
           onRequestClose={closeModal}
           className="cns-header-nav__modal"
@@ -185,37 +201,7 @@ export default function Edit({ attributes, setAttributes }) {
               </Button>
             </li>
           ))}
-          <Button
-            variant="primary"
-            onClick={openAddModal}
-            className="cns-header__nav__add-btn"
-          >
-            + Add link
-          </Button>
         </ul>
-        <div className="cns-header__nav__btn-container">
-          <Button className="user-btn" aria-label="user menu">
-            <svg
-              viewBox="0 0 16 16"
-              fill="none"
-              xmlns="http://www.w3.org/2000/svg"
-            >
-              <path
-                d="M8 7C9.65685 7 11 5.65685 11 4C11 2.34315 9.65685 1 8 1C6.34315 1 5 2.34315 5 4C5 5.65685 6.34315 7 8 7Z"
-                fill="currentColor"
-              />
-              <path
-                d="M14 12C14 10.3431 12.6569 9 11 9H5C3.34315 9 2 10.3431 2 12V15H14V12Z"
-                fill="currentColor"
-              />
-            </svg>
-          </Button>
-          <Button className="hamburger-btn">
-            <span></span>
-            <span></span>
-            <span></span>
-          </Button>
-        </div>
       </nav>
     </div>
   );

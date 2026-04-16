@@ -28,35 +28,6 @@
       opacity: 0.8;
     }
   }
-  &__add-btn {
-    position: absolute;
-    bottom: -5px;
-    right: 0;
-    transform: translateY(100%);
-  }
-  &__btn-container {
-    display: flex;
-    width: fit-content;
-    gap: 2rem;
-
-    white-space: nowrap;
-    button {
-      padding: 1rem 2rem;
-      border: 1px solid black;
-      &.user-btn {
-        height: 4rem;
-        width: 4rem;
-        padding: 0.5rem;
-        border-radius: 50%;
-        svg {
-          width: max-content;
-        }
-      }
-      &.hamburger-btn {
-        display: none;
-      }
-    }
-  }
 }
 @media screen and (min-width: 769px) {
   .cns-header__nav {
@@ -120,28 +91,6 @@
         &.is-active {
           opacity: 1;
           width: 92vw;
-        }
-      }
-    }
-    &__btn-container {
-      justify-content: flex-end;
-      button {
-        &.hamburger-btn {
-          display: flex;
-          flex-direction: column;
-          justify-content: center;
-          align-items: center;
-          gap: 0.4rem;
-          padding: 0.5rem;
-          height: 100%;
-          width: auto;
-          aspect-ratio: 1 / 1;
-          span {
-            display: block;
-            width: 100%;
-            height: 4px;
-            background-color: var(--wp--preset--color--text);
-          }
         }
       }
     }

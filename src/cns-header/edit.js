@@ -76,6 +76,7 @@ const TEMPLATE = [
             },
             [
               ["cns-theme/cns-header-nav", {}, []],
+              ["cns-theme/cns-user-menu", {}, []],
               [
                 "core/navigation",
                 {
