@@ -62,7 +62,7 @@ function theme_features()
     add_theme_support("title-tag");
     add_theme_support("post-thumbnails");
     add_theme_support("editor-styles");
-    add_editor_style(["build/index.css"]);
+    add_editor_style(["build/index.css", "build/editor.css"]);
     add_image_size("banner", 1600, 600, true);
     // add_image_size("mobile", 600, 900, true);
     // add_image_size("banner-xl", 2400, 900, true);
@@ -80,6 +80,7 @@ function register_cns_theme_blocks()
     ]);
     register_block_type_from_metadata(__DIR__ . "/build/cns-header");
     register_block_type_from_metadata(__DIR__ . "/build/cns-header-nav");
+    register_block_type_from_metadata(__DIR__ . "/build/cns-user-menu");
     // register_block_type_from_metadata(__DIR__ . "/build/footer");
     register_block_type_from_metadata(__DIR__ . "/build/banner");
     register_block_type_from_metadata(__DIR__ . "/build/slideshow");

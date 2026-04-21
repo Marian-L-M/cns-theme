@@ -6,7 +6,6 @@ Run for development in two different terminals
 
 ```
 npm run start
-npm run blocks
 ```
 
 Run to build out theme JS & SCSS functionality
