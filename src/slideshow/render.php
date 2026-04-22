@@ -1,20 +1,26 @@
-<!-- To do: Change to splide -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/glide.min.js"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Glide.js/3.2.0/css/glide.core.min.css">
-
-<?php if (!isset($attributes["imgURL"])) {
-    $attributes["imgURL"] = get_theme_file_uri("/assets/images/banner.png");
-} ?>
+<?php
+$slide_count = count($block->inner_blocks);
+$bullets = "";
+for ($i = 0; $i < $slide_count; $i++) {
+    $bullets .=
+        '<button class="glide__bullet" data-glide-dir="=' . $i . '"></button>';
+}
+?>
 <div class="cns-slideshow__wrapper">
   <div class="glide">
     <div class="glide__track" data-glide-el="track">
       <ul class="glide__slides">
-      <?php echo $content; ?>
+        <?php echo $content; ?>
       </ul>
     </div>
+    <div class="glide__arrows" data-glide-el="controls">
+      <button class="glide__arrow glide__arrow--left" data-glide-dir="<">&#8249;</button>
+      <button class="glide__arrow glide__arrow--right" data-glide-dir="&gt;">&#8250;</button>
+    </div>
+    <?php if ($slide_count > 1): ?>
+    <div class="glide__bullets" data-glide-el="controls[nav]">
+      <?php echo $bullets; ?>
+    </div>
+    <?php endif; ?>
   </div>
 </div>
-
-<script>
-  new Glide('.glide').mount()
-</script>
