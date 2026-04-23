@@ -15,9 +15,11 @@
   "attributes": {
     "align": { "type": "string", "default": "full" },
     "imgID": { "type": "number" },
-    "imgURL": {
-      "type": "string"
-    }
+    "imgURL": { "type": "string" },
+    "slideshowType": { "type": "string", "default": "hero" },
+    "bannerHeight": { "type": "number", "default": 500 },
+    "fixedHeight": { "type": "number", "default": 500 },
+    "fixedMaxWidth": { "type": "number", "default": 1200 }
   },
   "textdomain": "cns-theme",
   "editorScript": "file:./index.js",

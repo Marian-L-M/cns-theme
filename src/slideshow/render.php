@@ -2,11 +2,22 @@
 $slide_count = count($block->inner_blocks);
 $bullets = "";
 for ($i = 0; $i < $slide_count; $i++) {
-    $bullets .=
-        '<button class="glide__bullet" data-glide-dir="=' . $i . '"></button>';
+    $bullets .= '<button class="glide__bullet" data-glide-dir="=' . $i . '"></button>';
+}
+
+$type          = $attributes['slideshowType'] ?? 'hero';
+$wrapper_class = 'cns-slideshow__wrapper cns-slideshow__wrapper--' . esc_attr($type);
+$wrapper_props = [];
+
+if ($type === 'banner') {
+    $wrapper_props['height'] = intval($attributes['bannerHeight'] ?? 500) . 'px';
+} elseif ($type === 'fixed') {
+    $wrapper_props['height']    = intval($attributes['fixedHeight']  ?? 500)  . 'px';
+    $wrapper_props['max-width'] = intval($attributes['fixedMaxWidth'] ?? 1200) . 'px';
+    $wrapper_props['margin']    = '0 auto';
 }
 ?>
-<div class="cns-slideshow__wrapper">
+<div class="<?php echo $wrapper_class; ?>" style="<?php echo cns_generate_style_text($wrapper_props); ?>">
   <div class="glide">
     <div class="glide__track" data-glide-el="track">
       <ul class="glide__slides">

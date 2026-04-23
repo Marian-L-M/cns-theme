@@ -16,5 +16,19 @@
 .cns-slideshow {
   &__wrapper {
     width: 100%;
+    &--hero {
+      min-height: 40rem;
+      height: 100vh;
+      max-height: 108rem;
+    }
   }
+}
+.slideshow__container {
+  width: 100%;
+}
+.glide,
+.glide__track,
+.glide__slides,
+.slideshow__container {
+  height: 100%;
 }
