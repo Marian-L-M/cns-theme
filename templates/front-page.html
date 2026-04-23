@@ -1,22 +1,24 @@
 <!-- wp:group {"tagName":"main","anchor":"cns-layout-wrapper"} -->
-<!-- wp:template-part {"slug":"header","tagName":"header"} /-->
 <main id="cns-layout-wrapper" class="wp-block-group">
-  <!-- wp:group {"tagName":"div","anchor":"cns-hero"} -->
-  <div class="cns-hero__wrapper" id="cns-hero">
-    <!-- wp:cns-theme/slideshow -->
+  <!-- wp:template-part {"slug":"header","tagName":"header"} /-->
+  <!-- wp:group {"tagName":"div","anchor":"cns-hero","className":"cns-hero__wrapper"} -->
+  <div id="cns-hero" class="wp-block-group cns-hero__wrapper">
+    <!-- wp:cns-theme/slideshow /-->
   </div>
   <!-- /wp:group -->
   <!-- wp:columns -->
   <div class="wp-block-columns cns-col__wrapper">
-    <!-- wp:column {"className":"cns-col cns-col__side cns-col__left"} -->
-    <div
-      class="wp-block-column cns-col cns-col__side cns-col__left cns-sidebar"
-    >
+    <!-- wp:column {"className":"cns-col cns-col__side cns-col__left cns-sidebar"} -->
+    <div class="wp-block-column cns-col cns-col__side cns-col__left cns-sidebar">
       <!-- wp:template-part {"slug":"sidebar","tagName":"sidebar"} /-->
     </div>
     <!-- /wp:column -->
     <!-- wp:column {"className":"cns-col cns-col__center"} -->
-    <div class="wp-block-column cns-col cns-col__center"></div>
+    <div class="wp-block-column cns-col cns-col__center">
+      <!-- wp:heading {"level":1} -->
+      <h1 class="wp-block-heading">Wiki Archive</h1>
+      <!-- /wp:heading -->
+    </div>
     <!-- /wp:column -->
     <!-- wp:column {"className":"cns-col cns-col__side cns-col__right"} -->
     <div class="wp-block-column cns-col cns-col__side cns-col__right"></div>

@@ -1,6 +1,7 @@
 <?php
 // Setup theme
 
+require get_theme_file_path("/functions/theme-utilities.php");
 require get_theme_file_path("/functions/page-presets.php");
 // require get_theme_file_path("/functions/block-patterns.php");
 
