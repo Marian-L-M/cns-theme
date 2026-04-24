@@ -1,5 +1,6 @@
 <?php
 $items = $attributes["items"] ?? [];
+usort( $items, fn( $a, $b ) => ( $a["order"] ?? 0 ) <=> ( $b["order"] ?? 0 ) );
 $mode = $attributes["mode"] ?? "side-nav";
 $wrapper_attributes = get_block_wrapper_attributes([
     "data-wp-interactive" => "cns-theme/cns-header",
