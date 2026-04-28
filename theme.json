@@ -151,11 +151,17 @@
       ]
     },
     "custom": {
+      "breakpoint": {
+        "mobile": "782px"
+      },
       "header": {
         "height": "5rem"
       },
+      "elements": {
+        "toggle-width": "5rem"
+      },
       "layout": {
-        "col-side": "20rem",
+        "col-side": "clamp(20rem,20vw,24rem)",
         "col-wiki": "34rem"
       }
     }
