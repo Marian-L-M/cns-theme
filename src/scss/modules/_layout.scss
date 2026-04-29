@@ -35,7 +35,6 @@
   &__sidebar {
     padding: 0;
     width: fit-content;
-    // min-width: 6rem;
     min-width: calc(var(--wp--custom--elements--toggle-width, 5rem) + 1rem);
     flex-grow: unset !important;
     sidebar {
@@ -83,6 +82,11 @@
     }
     &__side {
       max-width: var(--wp--custom--layout--col-side);
+    }
+    &__sidebar {
+      &:has(.cns-sidebar--fixed) {
+        min-width: fit-content;
+      }
     }
     &__wiki {
       max-width: var(--wp--custom--layout--col-wiki);

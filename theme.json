@@ -163,7 +163,8 @@
         "height": "5rem"
       },
       "elements": {
-        "toggle-width": "5rem"
+        "toggle-width": "5rem",
+        "sidebar-width": "clamp(20rem,20vw,24rem)"
       },
       "layout": {
         "col-side": "clamp(20rem,20vw,24rem)",
