@@ -114,6 +114,11 @@
           "name": "Text"
         },
         {
+          "slug": "text-negative",
+          "color": "rgba(255, 255, 255, 1)",
+          "name": "Text Negative "
+        },
+        {
           "slug": "text-negative-80",
           "color": "rgba(255, 255, 255, 0.8)",
           "name": "Text Negative 80%"

@@ -1,0 +1,30 @@
+@use "./variables" as var;
+
+footer {
+  width: 100%;
+  padding: 4rem 2% 1rem;
+
+  background-color: var(--wp--preset--color--header-text);
+  color: var(--wp--preset--color--text-negative);
+  a {
+    color: var(--wp--preset--color--text-negative);
+  }
+  .cns-col {
+    &__wrapper {
+      gap: 1rem;
+    }
+  }
+  .wp-block-navigation {
+    &__responsive-container-content {
+      gap: 2rem;
+    }
+  }
+  .wp-block-site-logo img {
+    filter: invert(1);
+  }
+}
+
+.cns-col {
+  &__footer-wrapper {
+  }
+}
