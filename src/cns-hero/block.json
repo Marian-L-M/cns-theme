@@ -1,0 +1,99 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cns-theme/cns-hero",
+  "version": "1.0.0",
+  "title": "CNS Hero",
+  "description": "A hero slide with background image, colour overlay, and configurable content position.",
+  "category": "media",
+  "icon": "cover-image",
+  "textdomain": "cns-theme",
+  "supports": {
+    "align": ["full"]
+  },
+  "attributes": {
+    "mode": { "type": "string", "default": "unconstrained" },
+    "bannerHeight": { "type": "number" },
+    "align": { "type": "string", "default": "full" },
+    "bgImageID": { "type": "number" },
+    "bgImageURL": { "type": "string", "default": "" },
+    "bgColor": { "type": "string", "default": "" },
+    "contentPosition": { "type": "string", "default": "middle-center" },
+    "slidePadding": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      },
+      "properties": {
+        "top": { "type": "string" },
+        "right": { "type": "string" },
+        "bottom": { "type": "string" },
+        "left": { "type": "string" }
+      }
+    },
+    "overlayPadding": {
+      "type": "object",
+      "default": {
+        "top": "0px",
+        "right": "0px",
+        "bottom": "0px",
+        "left": "0px"
+      },
+      "properties": {
+        "top": { "type": "string" },
+        "right": { "type": "string" },
+        "bottom": { "type": "string" },
+        "left": { "type": "string" }
+      }
+    },
+    "authorCredit": {
+      "type": "object",
+      "default": {
+        "isVisible": false,
+        "position": "bottom-right",
+        "color": "#ffffff",
+        "id": "",
+        "url": "",
+        "text": "The author",
+        "icon": "clouds"
+      },
+      "properties": {
+        "isVisible": { "type": "boolean" },
+        "position": { "type": "string" },
+        "color": { "type": "string" },
+        "id": { "type": "string" },
+        "url": { "type": "string" },
+        "text": { "type": "string" },
+        "icon": { "type": "string" }
+      }
+    },
+    "heroCredit": {
+      "type": "object",
+      "default": {
+        "isVisible": false,
+        "position": "bottom-left",
+        "color": "#ffffff",
+        "id": "",
+        "url": "",
+        "text": "The article",
+        "icon": "marker"
+      },
+      "properties": {
+        "isVisible": { "type": "boolean" },
+        "position": { "type": "string" },
+        "color": { "type": "string" },
+        "id": { "type": "string" },
+        "url": { "type": "string" },
+        "text": { "type": "string" },
+        "icon": { "type": "string" }
+      }
+    }
+  },
+  "editorScript": "file:./index.js",
+  "style": "file:./style-index.css",
+  "editorStyle": "file:./index.css",
+  "render": "file:./render.php"
+}
