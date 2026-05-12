@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cns-theme/cns-section",
+  "version": "1.0.0",
+  "title": "CNS Section",
+  "category": "layout",
+  "icon": "layout",
+  "description": "A content section with a title, optional underline, and dynamic tab navigation.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "interactivity": true
+  },
+  "attributes": {
+    "title":        { "type": "string", "default": "" },
+    "titleLevel":   { "type": "string", "default": "h2" },
+    "showUnderline":{ "type": "boolean", "default": true }
+  },
+  "textdomain": "cns-theme",
+  "editorScript": "file:./index.js",
+  "style":        "file:./style-index.css",
+  "editorStyle":  "file:./index.css",
+  "render":       "file:./render.php",
+  "viewScriptModule": "file:./view.js"
+}
