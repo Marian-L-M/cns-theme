@@ -1,0 +1,41 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cns-theme/cns-table-of-contents",
+  "version": "1.0.0",
+  "title": "CNS Table of Contents",
+  "category": "layout",
+  "icon": "list-view",
+  "description": "Auto-generates a table of contents from CNS Section blocks and headings on the page. Labels and anchors are user-overridable.",
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "attributes": {
+    "title": { "type": "string", "default": "Table of Contents" },
+    "items": {
+      "type": "array",
+      "default": [],
+      "items": {
+        "type": "object",
+        "properties": {
+          "clientId":      { "type": ["string", "null"] },
+          "label":         { "type": "string" },
+          "anchor":        { "type": "string" },
+          "labelOverride": { "type": "boolean", "default": false },
+          "anchorOverride":{ "type": "boolean", "default": false }
+        }
+      }
+    },
+    "removedIds": {
+      "type": "array",
+      "default": [],
+      "items": { "type": "string" }
+    }
+  },
+  "textdomain": "cns-theme",
+  "editorScript": "file:./index.js",
+  "style":        "file:./style-index.css",
+  "editorStyle":  "file:./index.css",
+  "render":       "file:./render.php"
+}

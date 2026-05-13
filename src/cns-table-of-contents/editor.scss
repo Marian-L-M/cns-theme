@@ -1,0 +1,96 @@
+@charset "UTF-8";
+
+.wp-block-cns-theme-cns-table-of-contents {
+  border: 2px dashed rgba(47, 82, 129, 0.35);
+  border-radius: 3px;
+  padding: 1rem;
+  min-width: 24rem;
+
+  .cns-toc__title {
+    font-weight: 700;
+    margin: 0 0 0.75rem;
+  }
+
+  .cns-toc__empty {
+    color: #757575;
+    font-style: italic;
+    font-size: 0.85em;
+    margin: 0.5rem 0;
+  }
+
+  // Editing list — no default ol styles
+  .cns-toc__list--editing {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 0.75rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .cns-toc__editor-item {
+    border: 1px solid rgba(47, 82, 129, 0.2);
+    border-radius: 2px;
+    padding: 0.5rem 0.6rem;
+    background: #fff;
+  }
+
+  .cns-toc__editor-main {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+
+    // Stretch the TextControl to fill available space
+    .components-base-control {
+      flex: 1;
+      margin: 0;
+    }
+  }
+
+  .cns-toc__editor-anchor {
+    display: flex;
+    align-items: center;
+    gap: 0.3rem;
+    margin-top: 0.3rem;
+
+    .components-base-control {
+      flex: 1;
+      margin: 0;
+    }
+
+    input {
+      font-size: 0.8em;
+    }
+  }
+
+  .cns-toc__anchor-prefix {
+    font-size: 0.85em;
+    color: #757575;
+    font-family: monospace;
+    flex-shrink: 0;
+  }
+
+  .cns-toc__badge {
+    flex-shrink: 0;
+    font-size: 0.7em;
+    font-weight: 700;
+    text-transform: uppercase;
+    padding: 2px 5px;
+    border-radius: 2px;
+    letter-spacing: 0.03em;
+
+    &--auto {
+      background: rgba(78, 22, 168, 0.1);
+      color: #4e16a8;
+    }
+
+    &--manual {
+      background: rgba(47, 82, 129, 0.1);
+      color: #2f5281;
+    }
+  }
+
+  .cns-toc__add-btn {
+    margin-top: 0.25rem;
+  }
+}
