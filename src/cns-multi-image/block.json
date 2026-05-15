@@ -1,0 +1,26 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cns-theme/cns-multi-image",
+  "version": "0.1.0",
+  "title": "CNS Multi Image",
+  "category": "media",
+  "icon": "format-gallery",
+  "description": "Image viewer with a main display, thumbnail strip, arrow navigation and fullscreen lightbox.",
+  "example": {},
+  "supports": {
+    "html": false,
+    "interactivity": true
+  },
+  "attributes": {
+    "images": { "type": "array", "default": [] },
+    "maxWidth": { "type": "number", "default": 0 },
+    "thumbsPerRow": { "type": "number", "default": 4 }
+  },
+  "textdomain": "cns-theme",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "viewScriptModule": "file:./view.js"
+}

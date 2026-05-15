@@ -1,0 +1,25 @@
+.fancy-title {
+  // Image replace button — wraps the image so the whole image is clickable
+  &__image-replace {
+    display: block;
+    width: 100%;
+    padding: 0;
+    border: 2px dashed transparent;
+    background: none;
+    cursor: pointer;
+    transition: border-color 0.15s;
+
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+      transition: opacity 0.15s;
+    }
+
+    &:hover {
+      border-color: #007cba;
+
+      img { opacity: 0.75; }
+    }
+  }
+}

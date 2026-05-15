@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+.wp-block-cns-theme-cns-multi-image {
+  width: 100%;
+}
+
+.multi-image {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  width: 100%;
+
+  // ── Main viewer ─────────────────────────────────────────────────────────────
+
+  &__main {
+    position: relative;
+    width: 100%;
+    background: #000;
+    overflow: hidden;
+
+    &-img {
+      display: block;
+      width: 100%;
+      max-height: 70vh;
+      object-fit: contain;
+    }
+  }
+
+  // ── Shared arrow style (main + lightbox) ─────────────────────────────────────
+
+  &__arrow {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    font-size: 2.5rem;
+    line-height: 1;
+    padding: 0.15em 0.4em;
+    cursor: pointer;
+    z-index: 2;
+    transition: background 0.15s;
+
+    &--prev { left: 0; }
+    &--next { right: 0; }
+
+    &:hover { background: rgba(0, 0, 0, 0.75); }
+  }
+
+  // ── Fullscreen toggle ────────────────────────────────────────────────────────
+
+  &__fullscreen-btn {
+    position: absolute;
+    top: 0.5rem;
+    right: 0.5rem;
+    background: rgba(0, 0, 0, 0.45);
+    color: #fff;
+    border: none;
+    font-size: 1.1rem;
+    line-height: 1;
+    padding: 0.3em 0.35em;
+    cursor: pointer;
+    border-radius: 3px;
+    z-index: 2;
+    transition: background 0.15s;
+
+    &:hover { background: rgba(0, 0, 0, 0.75); }
+  }
+
+  // ── Thumbnail strip ──────────────────────────────────────────────────────────
+
+  &__thumbs {
+    display: grid;
+    grid-template-columns: repeat( var( --thumbs-per-row, 4 ), 1fr );
+    gap: 0.35rem;
+  }
+
+  &__thumb {
+    display: block;
+    padding: 0;
+    border: 2px solid transparent;
+    background: none;
+    cursor: pointer;
+    overflow: hidden;
+    transition: border-color 0.15s;
+
+    img {
+      display: block;
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      transition: opacity 0.15s;
+    }
+
+    &.is-active {
+      border-color: currentColor;
+    }
+
+    &:hover img { opacity: 0.8; }
+  }
+
+  // ── Lightbox ─────────────────────────────────────────────────────────────────
+
+  &__lightbox {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+
+    &.is-open {
+      display: flex;
+    }
+  }
+
+  &__lightbox-backdrop {
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.92);
+    cursor: pointer;
+  }
+
+  &__lightbox-content {
+    position: relative;
+    z-index: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    max-width: 92vw;
+    max-height: 92vh;
+
+    // Override arrow positioning inside lightbox
+    .multi-image__arrow {
+      font-size: 3rem;
+    }
+  }
+
+  &__lightbox-img {
+    display: block;
+    max-width: 88vw;
+    max-height: 88vh;
+    object-fit: contain;
+  }
+
+  &__lightbox-close {
+    position: absolute;
+    top: -2.25rem;
+    right: 0;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 0.25em;
+    cursor: pointer;
+    opacity: 0.8;
+
+    &:hover { opacity: 1; }
+  }
+}

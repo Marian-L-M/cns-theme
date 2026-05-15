@@ -1,0 +1,106 @@
+@charset "UTF-8";
+
+// ── Main viewer ─────────────────────────────────────────────────────────────────
+
+.multi-image__main {
+  position: relative;
+  background: #111;
+
+  &-img {
+    display: block;
+    width: 100%;
+    max-height: 480px;
+    object-fit: contain;
+  }
+}
+
+// Fullscreen button is disabled in the editor — dim it
+.multi-image__fullscreen-btn:disabled {
+  opacity: 0.35;
+  cursor: not-allowed;
+  pointer-events: none;
+}
+
+// ── Thumbnail strip ───────────────────────────────────────────────────────────
+
+.multi-image__thumbs {
+  display: grid;
+  grid-template-columns: repeat( var( --thumbs-per-row, 4 ), 1fr );
+  gap: 0.35rem;
+  margin-top: 0.5rem;
+}
+
+.multi-image__thumb-wrap {
+  position: relative;
+
+  &.is-active .multi-image__thumb-btn {
+    outline: 2px solid #007cba;
+    outline-offset: -2px;
+  }
+}
+
+.multi-image__thumb-btn {
+  display: block;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  overflow: hidden;
+
+  img {
+    display: block;
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+  }
+}
+
+// Action bar that appears over each thumbnail
+.multi-image__thumb-actions {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  gap: 2px;
+  padding: 3px;
+  background: rgba(0, 0, 0, 0.6);
+
+  button {
+    background: rgba(255, 255, 255, 0.88);
+    border: none;
+    border-radius: 2px;
+    font-size: 0.7rem;
+    line-height: 1.2;
+    padding: 2px 6px;
+    cursor: pointer;
+
+    &:hover { background: #fff; }
+    &:disabled { opacity: 0.28; cursor: default; }
+    &.is-destructive { color: #cc1818; }
+  }
+}
+
+// "Add images" cell at the end of the strip
+.multi-image__thumb-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  background: #f0f0f0;
+  border: 2px dashed #ccc;
+  border-radius: 2px;
+  font-size: 1.75rem;
+  color: #888;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+
+  &:hover {
+    background: #e4e4e4;
+    border-color: #aaa;
+    color: #555;
+  }
+}

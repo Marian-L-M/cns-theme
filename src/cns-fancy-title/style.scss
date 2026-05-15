@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.wp-block-cns-theme-cns-fancy-title {
+  width: 100%;
+}
+
+.fancy-title {
+  // ── Branded mode ─────────────────────────────────────────────────────────────
+
+  &--branded {
+    // mode-specific overrides slot here in future
+  }
+
+  // ── Two-column grid ──────────────────────────────────────────────────────────
+
+  &__grid {
+    display: grid;
+    grid-template-columns: var( --fancy-title-image-width, 200px ) 1fr;
+    align-items: center;
+    gap: 1.5rem;
+  }
+
+  // ── Image column ─────────────────────────────────────────────────────────────
+
+  &__image-col {
+    img {
+      display: block;
+      width: 100%;
+      height: auto;
+    }
+
+    &.has-vertical-divider {
+      border-right: var( --fancy-title-divider-thickness, 1px ) solid
+        var( --fancy-title-divider-color, #000 );
+      padding-right: 1.5rem;
+    }
+  }
+
+  // ── Text column ──────────────────────────────────────────────────────────────
+
+  &__text-col {
+    display: flex;
+    flex-direction: column;
+
+    // Strip default block margins so inner blocks stack tightly inside the flex column.
+    // Editors can use the separator block for intentional spacing.
+    > * {
+      margin-block: 0;
+    }
+
+    > * + * {
+      margin-block-start: 0.25rem;
+    }
+  }
+}

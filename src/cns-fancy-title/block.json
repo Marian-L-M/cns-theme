@@ -1,0 +1,30 @@
+{
+  "$schema": "https://schemas.wp.org/trunk/block.json",
+  "apiVersion": 3,
+  "name": "cns-theme/cns-fancy-title",
+  "version": "0.1.0",
+  "title": "CNS Fancy Title",
+  "category": "text",
+  "icon": "heading",
+  "description": "A styled title block with multiple display modes. Current modes: Branded.",
+  "keywords": [ "title", "heading", "branded" ],
+  "example": {},
+  "supports": {
+    "html": false
+  },
+  "textdomain": "cns-theme",
+  "editorScript": "file:./index.js",
+  "editorStyle": "file:./index.css",
+  "style": "file:./style-index.css",
+  "render": "file:./render.php",
+  "attributes": {
+    "mode":                { "type": "string",  "default": "branded" },
+    "imageId":             { "type": "number",  "default": 0 },
+    "imageUrl":            { "type": "string",  "default": "" },
+    "imageAlt":            { "type": "string",  "default": "" },
+    "imageWidth":          { "type": "number",  "default": 200 },
+    "showVerticalDivider": { "type": "boolean", "default": false },
+    "dividerColor":        { "type": "string",  "default": "#000000" },
+    "dividerThickness":    { "type": "number",  "default": 1 }
+  }
+}
