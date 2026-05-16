@@ -10,7 +10,8 @@
 $mode              = $attributes['mode']               ?? 'branded';
 $image_url         = $attributes['imageUrl']           ?? '';
 $image_alt         = $attributes['imageAlt']           ?? '';
-$image_width       = intval( $attributes['imageWidth'] ?? 200 );
+$image_width       = intval( $attributes['imageWidth']  ?? 200 );
+$column_gap        = intval( $attributes['columnGap']   ?? 24 );
 $show_v_divider    = (bool) ( $attributes['showVerticalDivider'] ?? false );
 $divider_color     = $attributes['dividerColor']       ?? '#000000';
 $divider_thickness = intval( $attributes['dividerThickness']     ?? 1 );
@@ -21,8 +22,9 @@ if ( $mode !== 'branded' ) {
 }
 
 $grid_style = sprintf(
-    '--fancy-title-image-width:%dpx;--fancy-title-divider-color:%s;--fancy-title-divider-thickness:%dpx;',
+    '--fancy-title-image-width:%dpx;--fancy-title-column-gap:%dpx;--fancy-title-divider-color:%s;--fancy-title-divider-thickness:%dpx;',
     $image_width,
+    $column_gap,
     esc_attr( $divider_color ),
     $divider_thickness
 );

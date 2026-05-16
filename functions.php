@@ -3,6 +3,7 @@
 
 require get_theme_file_path("/functions/theme-utilities.php");
 require get_theme_file_path("/functions/page-presets.php");
+require get_theme_file_path("/functions/theme-admin/cns-admin.php");
 // require get_theme_file_path("/functions/block-patterns.php");
 
 // Old
@@ -97,5 +98,6 @@ function register_cns_theme_blocks()
     register_block_type_from_metadata(__DIR__ . "/build/cns-tab");
     register_block_type_from_metadata(__DIR__ . "/build/cns-table-of-contents");
     register_block_type_from_metadata(__DIR__ . "/build/cns-multi-image");
+    register_block_type_from_metadata(__DIR__ . "/build/cns-fancy-title");
 }
 add_action("init", "register_cns_theme_blocks");

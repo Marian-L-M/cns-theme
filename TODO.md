@@ -12,3 +12,11 @@
 - Cleanup sidebar vibe logic, its a mess
 - Theme options page to:
   - Enable author page
+  - Enable comment block
+
+Block development
+
+- unify cns-theme blocks into multiblock
+- comment block & add functionality
+- Multi image block
+- Fancy title block

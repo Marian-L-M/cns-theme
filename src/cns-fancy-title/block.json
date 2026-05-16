@@ -23,6 +23,7 @@
     "imageUrl":            { "type": "string",  "default": "" },
     "imageAlt":            { "type": "string",  "default": "" },
     "imageWidth":          { "type": "number",  "default": 200 },
+    "columnGap":           { "type": "number",  "default": 24 },
     "showVerticalDivider": { "type": "boolean", "default": false },
     "dividerColor":        { "type": "string",  "default": "#000000" },
     "dividerThickness":    { "type": "number",  "default": 1 }

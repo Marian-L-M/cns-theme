@@ -17,7 +17,7 @@
     display: grid;
     grid-template-columns: var( --fancy-title-image-width, 200px ) 1fr;
     align-items: center;
-    gap: 1.5rem;
+    gap: var( --fancy-title-column-gap, 24px );
   }
 
   // ── Image column ─────────────────────────────────────────────────────────────
@@ -32,7 +32,7 @@
     &.has-vertical-divider {
       border-right: var( --fancy-title-divider-thickness, 1px ) solid
         var( --fancy-title-divider-color, #000 );
-      padding-right: 1.5rem;
+      padding-right: var( --fancy-title-column-gap, 24px );
     }
   }
 

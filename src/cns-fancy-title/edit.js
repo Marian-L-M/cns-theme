@@ -24,7 +24,7 @@ const ALLOWED_BLOCKS = [ "core/heading", "core/paragraph", "core/separator" ];
 
 export default function Edit( { attributes, setAttributes } ) {
   const {
-    imageId, imageUrl, imageAlt, imageWidth,
+    imageId, imageUrl, imageAlt, imageWidth, columnGap,
     showVerticalDivider, dividerColor, dividerThickness,
   } = attributes;
 
@@ -32,6 +32,7 @@ export default function Edit( { attributes, setAttributes } ) {
 
   const gridStyle = {
     "--fancy-title-image-width":      `${ imageWidth }px`,
+    "--fancy-title-column-gap":       `${ columnGap }px`,
     "--fancy-title-divider-color":    dividerColor || "#000000",
     "--fancy-title-divider-thickness":`${ dividerThickness }px`,
   };
@@ -51,6 +52,13 @@ export default function Edit( { attributes, setAttributes } ) {
             value={ imageWidth }
             onChange={ ( v ) => setAttributes( { imageWidth: v } ) }
             min={ 40 } max={ 600 } step={ 4 }
+            __nextHasNoMarginBottom __next40pxDefaultSize
+          />
+          <RangeControl
+            label={ __( "Gap to text column (px)", "cns-theme" ) }
+            value={ columnGap }
+            onChange={ ( v ) => setAttributes( { columnGap: v } ) }
+            min={ 0 } max={ 120 } step={ 4 }
             __nextHasNoMarginBottom __next40pxDefaultSize
           />
         </PanelBody>
